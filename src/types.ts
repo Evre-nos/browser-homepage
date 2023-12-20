@@ -1,0 +1,3 @@
+type weatherInfo = {
+  temp: number;
+};
