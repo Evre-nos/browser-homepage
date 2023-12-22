@@ -3,11 +3,10 @@ export type Temperature = {
 };
 
 export type LinkList = {
-  work: [Object];
-  bonfire: [Object];
+  work?: Entity[] | null;
+  bonfire?: Entity[] | null;
 };
-
-export type LinkObject = {
+export type Entity = {
   name: string;
   group: string;
   mode: string;
