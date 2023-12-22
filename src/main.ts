@@ -1,7 +1,7 @@
 import json from './assets/links.json';
 import { LinkList, Entity } from './types';
 
-const links: LinkList = json;
+const links = json;
 
 const date = new Date();
 const currentDay = new Date(
@@ -57,15 +57,13 @@ function createTitleLI(title: string, mode: string): HTMLLIElement {
   return li;
 }
 
-console.log(links);
-
-function createLinkGroups(data: LinkList) {
+function createLinkGroups(data: LinkList): void {
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
   const linkContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
-  const groupOne = (document.createElement('ul') as HTMLUListElement) || null;
-  const groupTwo = (document.createElement('ul') as HTMLUListElement) || null;
-  const groupThree = (document.createElement('ul') as HTMLUListElement) || null;
+  const groupOne = (document.createElement('ul') as HTMLElement) || null;
+  const groupTwo = (document.createElement('ul') as HTMLElement) || null;
+  const groupThree = (document.createElement('ul') as HTMLElement) || null;
 
   clearChildNodes(linkContainer);
   if (pic.dataset.picture == 'bonfire') {
@@ -117,7 +115,7 @@ function createLinkGroups(data: LinkList) {
   }
 }
 
-function createLI(dataObj: Entity) {
+function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
   const a = document.createElement('a');
   if (dataObj.mode == 'work') {
@@ -135,7 +133,7 @@ function createLI(dataObj: Entity) {
   return li;
 }
 
-function switchModes() {
+function switchModes(): void {
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
   const infoBar =
@@ -169,13 +167,14 @@ function switchModes() {
   }
 }
 
-function clearChildNodes(el: HTMLElement) {
+function clearChildNodes(el: HTMLElement): void {
   while (el.firstChild) {
     el.removeChild(el.firstChild);
   }
 }
 
 createLinkGroups(links);
+// console.log(links);
 
 window.addEventListener('keydown', (e) => {
   if (e.key == 'w') {
