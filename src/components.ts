@@ -1,5 +1,4 @@
 import { LinkList, Entity } from './types';
-import { clearChildNodes } from './helpers';
 
 export function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
@@ -32,16 +31,16 @@ export function createBonfireLinkEl(data: LinkList): HTMLElement {
   const groupOne = document.createElement('ul');
   const groupTwo = document.createElement('ul');
   const groupThree = document.createElement('ul');
-  clearChildNodes(linkContainer);
+  groupOne.appendChild(createTitleLI('daily', 'bonfire'));
+  groupOne.setAttribute('data-list', 'bonfire');
+  groupTwo.appendChild(createTitleLI('social', 'bonfire'));
+  groupTwo.setAttribute('data-list', 'bonfire');
+  groupThree.appendChild(createTitleLI('streaming', 'bonfire'));
+  groupThree.setAttribute('data-list', 'bonfire');
+  linkContainer.classList.add('links-container');
+
   data.bonfire?.forEach((item) => {
     const linkObject = createLI(item);
-    groupOne.appendChild(createTitleLI('daily', 'bonfire'));
-    groupOne.setAttribute('data-list', 'bonfire');
-    groupTwo.appendChild(createTitleLI('social', 'bonfire'));
-    groupTwo.setAttribute('data-list', 'bonfire');
-    groupThree.appendChild(createTitleLI('streaming', 'bonfire'));
-    groupThree.setAttribute('data-list', 'bonfire');
-
     switch (item.group) {
       case '0':
         groupOne.appendChild(linkObject);
@@ -65,15 +64,16 @@ export function createWorkLinksEl(data: LinkList): HTMLElement {
   const groupOne = document.createElement('ul');
   const groupTwo = document.createElement('ul');
   const groupThree = document.createElement('ul');
-  clearChildNodes(linkContainer);
+  linkContainer.classList.add('links-container');
+  groupOne.appendChild(createTitleLI('daily', 'work'));
+  groupOne.setAttribute('data-list', 'work');
+  groupTwo.appendChild(createTitleLI('tools', 'work'));
+  groupTwo.setAttribute('data-list', 'work');
+  groupThree.appendChild(createTitleLI('docs', 'work'));
+  groupThree.setAttribute('data-list', 'work');
+
   data.work?.forEach((item) => {
     const linkObject = createLI(item);
-    groupOne.appendChild(createTitleLI('daily', 'work'));
-    groupOne.setAttribute('data-list', 'bonfire');
-    groupTwo.appendChild(createTitleLI('tools', 'work'));
-    groupTwo.setAttribute('data-list', 'bonfire');
-    groupThree.appendChild(createTitleLI('docs', 'work'));
-    groupThree.setAttribute('data-list', 'bonfire');
 
     switch (item.group) {
       case '0':
