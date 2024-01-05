@@ -1,24 +1,42 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import linkData from './assets/links.json';
+import { switchModes, fetchWeather, init } from './helpers';
+import { LinkList } from './types';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const links: LinkList = {
+  bonfire: linkData.bonfire,
+  work: linkData.bonfire,
+};
+const date = new Date();
+const currentDay = new Date(
+  date.getFullYear(),
+  date.getMonth(),
+  date.getDate(),
+  date.getDay()
+).toLocaleDateString('en-US', {
+  year: 'numeric',
+  day: 'numeric',
+  month: 'long',
+});
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const dateSpan = document.querySelector('[data-date]') as HTMLElement;
+dateSpan.innerText = currentDay;
+
+const weather = fetchWeather(date);
+
+weather.then((data: string) => {
+  try {
+    const weatherSpan =
+      (document.querySelector('[data-weather]') as HTMLElement) || null;
+    weatherSpan.innerText = `${data}°C`;
+  } catch (err) {
+    console.error(`Error: ${err}`);
+  }
+});
+
+init(links);
+
+window.addEventListener('keydown', (e) => {
+  if (e.key == 'w') {
+    switchModes(links);
+  }
+});
