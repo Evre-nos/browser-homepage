@@ -1,6 +1,6 @@
-## Start Page
+## Home Page
 
-Home page for browser that has my most used websites
+Page that contains my most used links
 
 ## Attributes
 
