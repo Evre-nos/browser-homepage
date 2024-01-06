@@ -8,6 +8,8 @@
 
 [data-list-title="work"] {
   color: colors.$cp-peach;
+  font-family: fonts.$jost-font;
+  font-size: 1.5rem;
 }
 
 [data-info-bar="work"] {
@@ -42,4 +44,3 @@ a[data-list-item="work"]:visited {
 a[data-list-item="work"]:hover {
   color: colors.$cp-teal;
 }
-
