@@ -2,7 +2,7 @@
 @use 'fonts';
 
 [data-picture="work"] {
-  border: 3px solid var(--cp-mauve);
+  border: 3px solid colors.$cp-mauve;
   content: url("../assets/img/hhkbGuy.png");
 }
 
