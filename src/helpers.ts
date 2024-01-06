@@ -30,6 +30,7 @@ export function switchModes(data: LinkList): void {
     (document.querySelector('.right-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
+
   if (title.dataset.listTitle == 'bonfire') {
     rightContainer.removeChild(linksContainer);
     pic.removeAttribute('data-picture');
