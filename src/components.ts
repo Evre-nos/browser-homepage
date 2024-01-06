@@ -3,6 +3,7 @@ import { LinkList, Entity } from './types';
 export function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
   const a = document.createElement('a');
+
   if (dataObj.mode == 'work') {
     li.setAttribute('data-list-item', 'work');
     a.setAttribute('data-list-item', 'work');
@@ -64,17 +65,16 @@ export function createWorkLinksEl(data: LinkList): HTMLElement {
   const groupOne = document.createElement('ul');
   const groupTwo = document.createElement('ul');
   const groupThree = document.createElement('ul');
-  linkContainer.classList.add('links-container');
   groupOne.appendChild(createTitleLI('daily', 'work'));
   groupOne.setAttribute('data-list', 'work');
   groupTwo.appendChild(createTitleLI('tools', 'work'));
   groupTwo.setAttribute('data-list', 'work');
   groupThree.appendChild(createTitleLI('docs', 'work'));
   groupThree.setAttribute('data-list', 'work');
+  linkContainer.classList.add('links-container');
 
   data.work?.forEach((item) => {
     const linkObject = createLI(item);
-
     switch (item.group) {
       case '0':
         groupOne.appendChild(linkObject);

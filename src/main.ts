@@ -4,8 +4,9 @@ import { LinkList } from './types';
 
 const links: LinkList = {
   bonfire: linkData.bonfire,
-  work: linkData.bonfire,
+  work: linkData.work,
 };
+
 const date = new Date();
 const currentDay = new Date(
   date.getFullYear(),

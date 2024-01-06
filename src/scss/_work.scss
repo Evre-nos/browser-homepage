@@ -1,0 +1,46 @@
+@use 'colors';
+@use 'fonts';
+
+[data-picture="work"] {
+  border: 3px solid colors.$cp-mauve;
+  content: url("../assets/img/hhkbGuy.png");
+}
+
+[data-list-title="work"] {
+  color: colors.$cp-peach;
+  font-family: fonts.$jost-font;
+  font-size: 1.5rem;
+}
+
+[data-info-bar="work"] {
+  font-family: fonts.$jost-font;
+  color: colors.$cp-text;
+  background-color: colors.$cp-surface0;
+}
+
+[data-body="work"] {
+  background-color: colors.$cp-bg;
+}
+
+[data-list-item="work"] {
+  color: colors.$cp-mauve;
+  font-family: fonts.$jost-font;
+}
+
+[data-directory="work"] {
+  font-family: fonts.$jost-font; 
+  color: colors.$cp-mauve;
+}
+
+a[data-list-item="work"]:link {
+  text-decoration: none;
+  color: colors.$cp-rosewater;
+}
+
+a[data-list-item="work"]:visited {
+  color: colors.$cp-text;
+}
+
+a[data-list-item="work"]:hover {
+  color: colors.$cp-teal;
+}
