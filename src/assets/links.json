@@ -133,6 +133,12 @@
       "group": "2",
       "mode": "bonfire",
       "url": "https://disneyplus.com"
+    },
+    {
+      "name": "jellyfin",
+      "group": "2",
+      "mode": "bonfire",
+      "url": "https://jf-vue.pages.dev/#/"
     }
   ]
 }
