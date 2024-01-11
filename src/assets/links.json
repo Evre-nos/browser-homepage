@@ -111,6 +111,12 @@
       "url": "https://discord.com/app"
     },
     {
+      "name": "the story graph",
+      "group": "1",
+      "mode": "bonfire",
+      "url": "https://app.thestorygraph.com"
+    },
+    {
       "name": "criterion channel",
       "group": "2",
       "mode": "bonfire",
