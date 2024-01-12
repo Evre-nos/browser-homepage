@@ -3,16 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://abazzi.github.io/homePage/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "npm run build &&     git add -f dist &&     git commit -m 'build project for deployment' &&     git subtree push --prefix dist origin gh-pages &&     git reset --soft HEAD~1"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.56.0",
+    "gh-pages": "^6.1.1",
     "sass": "^1.69.7",
     "typescript": "^5.3.3",
     "vite": "^5.0.0",
