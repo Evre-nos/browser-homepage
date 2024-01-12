@@ -1,45 +1,46 @@
-@use 'fonts';
-@use 'colors';
+@use 'fonts' as f;
+@use 'colors' as c;
 
-[data-directory="bonfire"] {
-  font-family: fonts.$toshiba-sat;
-  color: colors.$champagne-pink;
+[data-directory='bonfire'] {
+  font-family: f.$toshiba-sat;
+  color: c.$champagne-pink;
 }
 
-[data-picture="bonfire"] {
-  border: 3px solid colors.$dark-salmon;
-  content: url("../assets/img/bonfire.gif");
+[data-picture='bonfire'] {
+  border: 3px solid c.$dark-salmon;
+  content: url('../assets/img/bonfire.gif');
 }
 
-[data-list-title="bonfire"] {
-  color: colors.$dark-salmon;
+[data-info-bar='bonfire'] {
+  font-family: f.$toshiba-sat;
+  color: c.$champagne-pink;
+  background-color: c.$rose-ebony;
 }
 
-[data-info-bar="bonfire"] {
-  font-family: fonts.$toshiba-sat; 
-  color: colors.$champagne-pink; 
-  background-color: colors.$rose-ebony;
+[data-body='bonfire'] {
+  background-color: c.$background-red;
 }
 
-[data-body="bonfire"] {
-  background-color: colors.$background-red;
+[data-list='bonfire'] {
+  color: c.$champagne-pink;
+  font-family: f.$toshiba-sat;
 }
 
-[data-list="bonfire"] {
-  color: colors.$champagne-pink;
-  font-family: fonts.$toshiba-sat;
+[data-list-title='bonfire'] {
+  color: c.$dark-salmon;
 }
 
-a[data-list-item="bonfire"]:link {
-  text-decoration: none;
-  color: colors.$bushwick-green;
-}
+[data-list-item='bonfire'] {
+  a {
+    text-decoration: none;
+    color: c.$solaire-dark-green;
+  }
 
-a[data-list-item="bonfire"]:visited {
-  color: colors.$champagne-pink;
-}
+  a:visited {
+    color: c.$champagne-pink;
+  }
 
-a[data-list-item="bonfire"]:hover {
-  color: colors.$solaire-green; 
+  a:hover {
+    color: c.$solaire-green;
+  }
 }
-

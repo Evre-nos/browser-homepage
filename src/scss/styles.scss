@@ -3,6 +3,7 @@
 @import 'work';
 @import 'colors';
 @import 'fonts';
+@import 'media_queries';
 
 ::root {
   font-synthesis: none;
@@ -47,8 +48,6 @@ li {
   border-radius: 5px;
 }
 
-
-
 .title {
   font-size: 1.7rem;
   text-align: center;
@@ -63,7 +62,7 @@ li {
 .main-container {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr;
-  grid-template-areas: ". left right .";
+  grid-template-areas: '. left right .';
   font-size: 1.2rem;
   text-align: center;
   column-gap: 80px;
@@ -107,6 +106,7 @@ li {
   0% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -117,29 +117,3 @@ li {
 }
 
 /*Media Queries*/
-@media only screen and (min-width: 1400px) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr;
-    grid-template-areas: ". left right .";
-    column-gap: 80px;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    column-gap: 80px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .info-bar {
-    display: flex;
-    font-size: 1.2rem;
-    justify-content: space-around;
-  }
-}

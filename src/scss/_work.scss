@@ -1,46 +1,46 @@
-@use 'colors';
-@use 'fonts';
+@use 'colors' as c;
+@use 'fonts' as f;
 
-[data-picture="work"] {
-  border: 3px solid colors.$cp-mauve;
-  content: url("../assets/img/hhkbGuy.png");
+[data-picture='work'] {
+  border: 3px solid c.$cp-mauve;
+  content: url('../assets/img/hhkbGuy.png');
 }
 
-[data-list-title="work"] {
-  color: colors.$cp-peach;
-  font-family: fonts.$jost-font;
+[data-list-title='work'] {
+  color: c.$cp-peach;
+  font-family: f.$jost-font;
   font-size: 1.5rem;
 }
 
-[data-info-bar="work"] {
-  font-family: fonts.$jost-font;
-  color: colors.$cp-text;
-  background-color: colors.$cp-surface0;
+[data-info-bar='work'] {
+  font-family: f.$jost-font;
+  color: c.$cp-text;
+  background-color: c.$cp-surface0;
 }
 
-[data-body="work"] {
-  background-color: colors.$cp-bg;
+[data-body='work'] {
+  background-color: c.$cp-bg;
 }
 
-[data-list-item="work"] {
-  color: colors.$cp-mauve;
-  font-family: fonts.$jost-font;
+[data-list-item='work'] {
+  color: c.$cp-mauve;
+  font-family: f.$jost-font;
+
+  a:link {
+    text-decoration: none;
+    color: c.$cp-rosewater;
+  }
+
+  a:visited {
+    color: c.$cp-text;
+  }
+
+  a:hover {
+    color: c.$cp-teal;
+  }
 }
 
-[data-directory="work"] {
-  font-family: fonts.$jost-font; 
-  color: colors.$cp-mauve;
-}
-
-a[data-list-item="work"]:link {
-  text-decoration: none;
-  color: colors.$cp-rosewater;
-}
-
-a[data-list-item="work"]:visited {
-  color: colors.$cp-text;
-}
-
-a[data-list-item="work"]:hover {
-  color: colors.$cp-teal;
+[data-directory='work'] {
+  font-family: f.$jost-font;
+  color: c.$cp-mauve;
 }
