@@ -32,6 +32,7 @@ export function switchModes(data: LinkList): void {
     (document.querySelector('.links-container') as HTMLElement) || null;
 
   if (title.dataset.listTitle == 'bonfire') {
+    localStorage.setItem('mode', 'work');
     rightContainer.removeChild(linksContainer);
     pic.removeAttribute('data-picture');
     pic.setAttribute('data-picture', 'work');
@@ -46,6 +47,7 @@ export function switchModes(data: LinkList): void {
     directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
     rightContainer.appendChild(createWorkLinksEl(data));
   } else {
+    localStorage.setItem('mode', 'bonfire');
     rightContainer.removeChild(linksContainer);
     pic.removeAttribute('data-picture');
     pic.setAttribute('data-picture', 'bonfire');
@@ -64,7 +66,14 @@ export function switchModes(data: LinkList): void {
 export function init(data: LinkList): void {
   const rightContainer =
     (document.querySelector('.right-container') as HTMLElement) || null;
-  const bonfire = createBonfireLinkEl(data);
-
-  rightContainer.appendChild(bonfire);
+  if (localStorage.getItem('mode') == null) {
+    const initStartMode = createBonfireLinkEl(data);
+    rightContainer.appendChild(initStartMode);
+  } else if (localStorage.getItem('mode') == 'bonfire') {
+    const initStartMode = createBonfireLinkEl(data);
+    rightContainer.appendChild(initStartMode);
+  } else if (localStorage.getItem('mode') == 'work') {
+    const initStartMode = createWorkLinksEl(data);
+    rightContainer.appendChild(initStartMode);
+  }
 }
