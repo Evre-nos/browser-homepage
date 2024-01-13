@@ -1,11 +1,10 @@
-/*Font Inports from Google Fonts*/
 @import 'bonfire';
 @import 'work';
 @import 'colors';
 @import 'fonts';
-@import 'media_queries';
+@import 'breakpoints';
 
-::root {
+:root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -58,7 +57,6 @@ li {
   font-size: 3rem;
 }
 
-.info-bar,
 .main-container {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 1fr;
@@ -116,4 +114,109 @@ li {
   }
 }
 
-/*Media Queries*/
+@media only screen and (max-width: $sm-devices) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    column-gap: 80px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-bar {
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+  }
+
+  .directory {
+    font-size: 2.5rem;
+  }
+
+  .links-container {
+    text-align: center;
+    gap: 0.1rem;
+    padding-top: 0px;
+  }
+
+  [data-picture] {
+    width: 80%;
+    margin: 2.5rem;
+  }
+
+  [data-list-title] {
+    font-size: 1.2rem;
+  }
+
+  [data-list-item] {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: $md-devices) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    grid-template-areas: '. left right .';
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-bar {
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: $lg-devices) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    grid-template-areas: '. left right .';
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-bar {
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: $xl-devices) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    grid-template-areas: '. left right .';
+    column-gap: 80px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-bar {
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: $xxl-devices) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    grid-template-areas: '. left right .';
+    column-gap: 80px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info-bar {
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-around;
+  }
+}
