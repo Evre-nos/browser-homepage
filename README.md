@@ -3,8 +3,10 @@ Start page that contains my most used links for easy access
 Has two modes: "Work" for any Dev links and "Bonfire" for any leasure links.
 
 ## Images
-![image](https://github.com/Abazzi/homePage/assets/8884041/0cc6604e-63ec-4e45-8ae3-86cddf4571e3)
-![image](https://github.com/Abazzi/homePage/assets/8884041/38ad8f56-089f-4fd6-a724-b01afa7e06ec)
+### Bonfire Mode
+![image](https://github.com/Abazzi/homePage/assets/8884041/7801f15d-d9e9-4157-91c9-375b1f445610)
+### Work Mode
+![image](https://github.com/Abazzi/homePage/assets/8884041/0f34767a-791b-48a0-ae85-5a36b37c3e0d)
 
 
 ## Attributes
