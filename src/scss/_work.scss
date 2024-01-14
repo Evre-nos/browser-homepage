@@ -1,5 +1,5 @@
-@use 'colors' as c;
-@use 'fonts' as f;
+@use 'abstracts/colors' as c;
+@use 'abstracts/fonts' as f;
 
 [data-picture='work'] {
   border: 3px solid c.$cp-mauve;
