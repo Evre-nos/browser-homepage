@@ -91,11 +91,10 @@ export function switchModes(data: LinkList) {
 export function init(data: LinkList): void {
   const rightContainer =
     (document.querySelector('.right-container') as HTMLElement) || null;
-  if (localStorage.getItem('mode') == null) {
-    const initStartMode = createBonfireLinkEl(data);
-    rightContainer.appendChild(initStartMode);
-    switchToBonfire(data);
-  } else if (localStorage.getItem('mode') == 'bonfire') {
+  if (
+    localStorage.getItem('mode') == null ||
+    localStorage.getItem('mode') == 'bonfire'
+  ) {
     const initStartMode = createBonfireLinkEl(data);
     rightContainer.appendChild(initStartMode);
     switchToBonfire(data);
