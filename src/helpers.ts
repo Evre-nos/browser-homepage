@@ -16,6 +16,7 @@ export async function fetchWeather(date: Date): Promise<string> {
 }
 
 export function switchToWork(data: LinkList): void {
+  const tab = (document.querySelector('title') as HTMLTitleElement) || null;
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
   const infoBar =
@@ -43,10 +44,12 @@ export function switchToWork(data: LinkList): void {
   directory.removeAttribute('data-directory');
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
+  tab.textContent = '~/work';
   rightContainer.appendChild(createWorkLinksEl(data));
 }
 
 export function switchToBonfire(data: LinkList): void {
+  const tab = (document.querySelector('title') as HTMLTitleElement) || null;
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
   const infoBar =
@@ -75,6 +78,7 @@ export function switchToBonfire(data: LinkList): void {
   directory.setAttribute('data-directory', 'bonfire');
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
+  tab.textContent = '~/bonfire';
 }
 
 export function switchModes(data: LinkList) {
