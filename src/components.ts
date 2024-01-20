@@ -1,4 +1,14 @@
 import { LinkList, Entity } from './types';
+import bonfireAppleTouch from './assets/img/bonfireFavicon/apple-touch-icon.png';
+import bonfireFav32 from './assets/img/bonfireFavicon/favicon-32x32.png';
+import bonfireFav16 from './assets/img/bonfireFavicon/favicon-16x16.png';
+import bonfireManifest from './assets/img/bonfireFavicon/apple-touch-icon.png';
+import bonfireMaskIcon from './assets/img/bonfireFavicon/apple-touch-icon.png';
+import workAppleTouch from './assets/img/workFavicon/apple-touch-icon.png';
+import workFav32 from './assets/img/workFavicon/favicon-32x32.png';
+import workFav16 from './assets/img/workFavicon/favicon-16x16.png';
+import workManifest from './assets/img/workFavicon/apple-touch-icon.png';
+import workMaskIcon from './assets/img/workFavicon/apple-touch-icon.png';
 
 export function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
@@ -39,6 +49,7 @@ export function createBonfireLinkEl(data: LinkList): HTMLElement {
   groupThree.appendChild(createTitleLI('streaming', 'bonfire'));
   groupThree.setAttribute('data-list', 'bonfire');
   linkContainer.classList.add('links-container');
+  createBonfireFavIcon();
 
   data.bonfire?.forEach((item) => {
     const linkObject = createLI(item);
@@ -72,6 +83,7 @@ export function createWorkLinksEl(data: LinkList): HTMLElement {
   groupThree.appendChild(createTitleLI('docs', 'work'));
   groupThree.setAttribute('data-list', 'work');
   linkContainer.classList.add('links-container');
+  createWorkFavIcon();
 
   data.work?.forEach((item) => {
     const linkObject = createLI(item);
@@ -91,4 +103,32 @@ export function createWorkLinksEl(data: LinkList): HTMLElement {
     linkContainer.appendChild(groupThree);
   });
   return linkContainer;
+}
+
+export function createBonfireFavIcon(): void {
+  const appleTouch = document.getElementById('appleTouch') as HTMLLinkElement;
+  const icon32 = document.getElementById('icon32') as HTMLLinkElement;
+  const icon16 = document.getElementById('icon16') as HTMLLinkElement;
+  const mainifest = document.getElementById('manifest') as HTMLLinkElement;
+  const maskIcon = document.getElementById('maskIcon') as HTMLLinkElement;
+
+  appleTouch.href = bonfireAppleTouch;
+  icon32.href = bonfireFav32;
+  icon16.href = bonfireFav16;
+  mainifest.href = bonfireManifest;
+  maskIcon.href = bonfireMaskIcon;
+}
+
+export function createWorkFavIcon(): void {
+  const appleTouch = document.getElementById('appleTouch') as HTMLLinkElement;
+  const icon32 = document.getElementById('icon32') as HTMLLinkElement;
+  const icon16 = document.getElementById('icon16') as HTMLLinkElement;
+  const mainifest = document.getElementById('manifest') as HTMLLinkElement;
+  const maskIcon = document.getElementById('maskIcon') as HTMLLinkElement;
+
+  appleTouch.href = workAppleTouch;
+  icon32.href = workFav32;
+  icon16.href = workFav16;
+  mainifest.href = workManifest;
+  maskIcon.href = workMaskIcon;
 }
