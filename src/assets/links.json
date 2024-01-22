@@ -55,6 +55,12 @@
       "url": "https://developer.mozilla.org/en-US/"
     },
     {
+      "name": "wumbo",
+      "group": "2",
+      "mode": "work",
+      "url": "https://wumbo.net"
+    },
+    {
       "name": "rosetta code",
       "group": "2",
       "mode": "work",
