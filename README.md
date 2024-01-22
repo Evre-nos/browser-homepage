@@ -15,9 +15,11 @@ Has two modes: "Work" for any Dev links and "Bonfire" for any leisure links.
 
 ## Attributes
 
-| Asset         | Attribute Link                                                                          |
-| ------------- | --------------------------------------------------------------------------------------- |
-| Work Image    | [HHKB Guy by Farel Dalrymple](https://www.fareldal.com/)                                |
-| Bonfire Image | [Pixel Solaire](https://www.deviantart.com/zedotagger/art/Dark-Souls-Solaire-537366036) |
-| Work Font     | [Jost](https://fonts.google.com/specimen/Jost)                                          |
-| Bonfire Font  | [Toshiba Sat](https://int10h.org/oldschool-pc-fonts/fontlist/font?toshibasat_8x14)      |
+| Asset           | Attribute Link                                                                                                                          |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Work Image      | [HHKB Guy by Farel Dalrymple](https://www.fareldal.com/)                                                                                |
+| Work Font       | [Jost](https://fonts.google.com/specimen/Jost)                                                                                          |
+| Work Favicon    | [Programming Icon](https://www.iconfinder.com/icons/379416/programming_icon)                                                            |
+| Bonfire Image   | [Pixel Solaire](https://www.deviantart.com/zedotagger/art/Dark-Souls-Solaire-537366036)                                                 |
+| Bonfire Font    | [Toshiba Sat](https://int10h.org/oldschool-pc-fonts/fontlist/font?toshibasat_8x14)                                                      |
+| Bonfire Favicon | [Estus Flask from Dark Souls](<https://darksouls.fandom.com/wiki/Estus_Flask_(Dark_Souls)>) \* Don't go on fandom it's a horrible place |

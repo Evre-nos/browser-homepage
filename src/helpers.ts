@@ -15,6 +15,34 @@ export async function fetchWeather(date: Date): Promise<string> {
   return `${data.hourly.temperature_2m[date.getHours()]}`;
 }
 
+export function createBonfireFavIcon(): void {
+  const appleTouch = document.getElementById('appleTouch') as HTMLLinkElement;
+  const icon32 = document.getElementById('icon32') as HTMLLinkElement;
+  const icon16 = document.getElementById('icon16') as HTMLLinkElement;
+  const mainifest = document.getElementById('manifest') as HTMLLinkElement;
+  const maskIcon = document.getElementById('maskIcon') as HTMLLinkElement;
+
+  appleTouch.href = '/src/assets/img/bonfireFavicon/apple-touch-icon.png';
+  icon32.href = '/src/assets/img/bonfireFavicon/favicon-32x32.png';
+  icon16.href = '/src/assets/img/bonfireFavicon/favicon-16x16.png';
+  mainifest.href = '/src/assets/img/bonfireFavicon/site.manifest';
+  maskIcon.href = '/src/assets/img/bonfireFavicon/safari-pinned-tab.svg';
+}
+
+export function createWorkFavIcon(): void {
+  const appleTouch = document.getElementById('appleTouch') as HTMLLinkElement;
+  const icon32 = document.getElementById('icon32') as HTMLLinkElement;
+  const icon16 = document.getElementById('icon16') as HTMLLinkElement;
+  const mainifest = document.getElementById('manifest') as HTMLLinkElement;
+  const maskIcon = document.getElementById('maskIcon') as HTMLLinkElement;
+
+  appleTouch.href = '/src/assets/img/workFavicon/apple-touch-icon.png';
+  icon32.href = '/src/assets/img/workFavicon/favicon-32x32.png';
+  icon16.href = '/src/assets/img/workFavicon/favicon-16x16.png';
+  mainifest.href = '/src/assets/img/workFavicon/site.manifest';
+  maskIcon.href = '/src/assets/img/workFavicon/safari-pinned-tab.svg';
+}
+
 export function switchToWork(data: LinkList): void {
   const tab = (document.querySelector('title') as HTMLTitleElement) || null;
   const title =
