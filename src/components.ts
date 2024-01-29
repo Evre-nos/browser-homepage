@@ -42,12 +42,15 @@ export function createBonfireLinkEl(data: LinkList): HTMLElement {
   const groupOne = document.createElement('ul');
   const groupTwo = document.createElement('ul');
   const groupThree = document.createElement('ul');
+  const groupFour = document.createElement('ul');
   groupOne.appendChild(createTitleLI('daily', 'bonfire'));
   groupOne.setAttribute('data-list', 'bonfire');
   groupTwo.appendChild(createTitleLI('social', 'bonfire'));
   groupTwo.setAttribute('data-list', 'bonfire');
   groupThree.appendChild(createTitleLI('streaming', 'bonfire'));
   groupThree.setAttribute('data-list', 'bonfire');
+  groupFour.appendChild(createTitleLI('server', 'bonfire'));
+  groupFour.setAttribute('data-list', 'bonfire');
   linkContainer.classList.add('links-container');
   createBonfireFavIcon();
 
@@ -63,10 +66,14 @@ export function createBonfireLinkEl(data: LinkList): HTMLElement {
       case '2':
         groupThree.appendChild(linkObject);
         break;
+      case '3':
+        groupFour.appendChild(linkObject);
+        break;
     }
     linkContainer.appendChild(groupOne);
     linkContainer.appendChild(groupTwo);
     linkContainer.appendChild(groupThree);
+    linkContainer.appendChild(groupFour);
   });
   return linkContainer;
 }
