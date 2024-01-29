@@ -141,10 +141,28 @@
       "url": "https://disneyplus.com"
     },
     {
-      "name": "jellyfin",
-      "group": "2",
+      "name": "jellyfin vue",
+      "group": "3",
       "mode": "bonfire",
       "url": "https://jf-vue.pages.dev/#/"
+    },
+    {
+      "name": "radarr",
+      "group": "3",
+      "mode": "bonfire",
+      "url": "http://localhost:7878/"
+    },
+    {
+      "name": "sonarr",
+      "group": "3",
+      "mode": "bonfire",
+      "url": "http://localhost:8989/"
+    },
+    {
+      "name": "qbittorrent",
+      "group": "3",
+      "mode": "bonfire",
+      "url": "http://localhost:8112/"
     }
   ]
 }
