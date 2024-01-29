@@ -52,6 +52,7 @@ export function createBonfireLinkEl(data: LinkList): HTMLElement {
   groupFour.appendChild(createTitleLI('server', 'bonfire'));
   groupFour.setAttribute('data-list', 'bonfire');
   linkContainer.classList.add('links-container');
+  linkContainer.setAttribute('data-mode', 'bonfire');
   createBonfireFavIcon();
 
   data.bonfire?.forEach((item) => {
@@ -90,6 +91,7 @@ export function createWorkLinksEl(data: LinkList): HTMLElement {
   groupThree.appendChild(createTitleLI('docs', 'work'));
   groupThree.setAttribute('data-list', 'work');
   linkContainer.classList.add('links-container');
+  linkContainer.setAttribute('data-mode', 'work');
   createWorkFavIcon();
 
   data.work?.forEach((item) => {
