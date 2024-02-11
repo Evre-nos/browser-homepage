@@ -1,4 +1,8 @@
-import { createWorkLinksEl, createBonfireLinkEl } from './components';
+import {
+  createWorkLinksEl,
+  createBonfireLinkEl,
+  createTimerButton,
+} from './components';
 import { LinkList } from './types';
 
 export function clearChildNodes(el: HTMLElement): void {
@@ -51,6 +55,8 @@ export function switchToWork(data: LinkList): void {
     (document.querySelector('[data-info-bar]') as HTMLDivElement) || null;
   const body =
     (document.querySelector('[data-body]') as HTMLBodyElement) || null;
+  const directoryContainer =
+    document.getElementById('directory-container') || null;
   const directory =
     (document.querySelector('[data-directory]') as HTMLParagraphElement) ||
     null;
@@ -60,6 +66,7 @@ export function switchToWork(data: LinkList): void {
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
   localStorage.setItem('mode', 'work');
+  const toggle = createTimerButton();
   rightContainer.removeChild(linksContainer);
   pic.removeAttribute('data-picture');
   pic.setAttribute('data-picture', 'work');
@@ -72,6 +79,7 @@ export function switchToWork(data: LinkList): void {
   directory.removeAttribute('data-directory');
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
+  directoryContainer.appendChild(toggle);
   tab.textContent = '~/work';
   rightContainer.appendChild(createWorkLinksEl(data));
 }
@@ -87,6 +95,7 @@ export function switchToBonfire(data: LinkList): void {
   const directory =
     (document.querySelector('[data-directory]') as HTMLParagraphElement) ||
     null;
+  const directoryContainer = document.getElementById('directory-container');
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
   const rightContainer =
     (document.querySelector('.right-container') as HTMLElement) || null;
@@ -104,6 +113,7 @@ export function switchToBonfire(data: LinkList): void {
   body.setAttribute('data-body', 'bonfire');
   directory.removeAttribute('data-directory');
   directory.setAttribute('data-directory', 'bonfire');
+  directoryContainer.removeChild(directoryContainer.lastElementChild);
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
   tab.textContent = '~/bonfire';
