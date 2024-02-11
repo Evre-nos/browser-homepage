@@ -141,3 +141,22 @@ export function createWorkFavIcon(): void {
   mainifest.href = workManifest;
   maskIcon.href = workMaskIcon;
 }
+
+export function createTimerToggleSwitch(): HTMLInputElement {
+  const input = document.createElement('input');
+  input.setAttribute('id', 'switch');
+  input.setAttribute('type', 'checkbox');
+  input.classList.add('checkbox');
+
+  const label = document.createElement('label');
+  label.setAttribute('for', 'switch');
+  label.classList.add('toggle');
+
+  const labelText = document.createElement('p');
+  labelText.textContent = 'ON OFF';
+
+  label.appendChild(labelText);
+  input.appendChild(input);
+
+  return input;
+}
