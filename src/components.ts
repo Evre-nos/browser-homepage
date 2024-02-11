@@ -142,21 +142,22 @@ export function createWorkFavIcon(): void {
   maskIcon.href = workMaskIcon;
 }
 
-export function createTimerToggleSwitch(): HTMLInputElement {
-  const input = document.createElement('input');
-  input.setAttribute('id', 'switch');
-  input.setAttribute('type', 'checkbox');
-  input.classList.add('checkbox');
+export function createTimerButton(): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.setAttribute('id', 'timer-button');
+  button.setAttribute('data-directory', 'work');
+  button.innerHTML = '&#x23F2;';
 
-  const label = document.createElement('label');
-  label.setAttribute('for', 'switch');
-  label.classList.add('toggle');
-
-  const labelText = document.createElement('p');
-  labelText.textContent = 'ON OFF';
-
-  label.appendChild(labelText);
-  input.appendChild(input);
-
-  return input;
+  button.addEventListener('click', () => {
+    const minutes = prompt('How many minutes is the break?');
+    if (minutes != null) {
+      window.removeEventListener('keydown', (e) => {
+        if (e.key == 'w') {
+          switchModes(links);
+        }
+      });
+      setTimeout(() => {}, parseInt(minutes) * 600);
+    }
+  });
+  return button;
 }

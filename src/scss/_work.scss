@@ -44,3 +44,12 @@
   font-family: f.$jost-font;
   color: c.$cp-mauve;
 }
+
+button[data-directory='work'] {
+  background-color: c.$cp-surface0;
+  color: c.$cp-text;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$cp-mauve;
+  outline: none;
+}
