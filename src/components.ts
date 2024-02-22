@@ -147,17 +147,5 @@ export function createTimerButton(): HTMLButtonElement {
   button.setAttribute('id', 'timer-button');
   button.setAttribute('data-directory', 'work');
   button.innerHTML = '&#x23F2;';
-
-  button.addEventListener('click', () => {
-    const minutes = prompt('How many minutes is the break?');
-    if (minutes != null) {
-      window.removeEventListener('keydown', (e) => {
-        if (e.key == 'w') {
-          switchModes(links);
-        }
-      });
-      setTimeout(() => {}, parseInt(minutes) * 600);
-    }
-  });
   return button;
 }
