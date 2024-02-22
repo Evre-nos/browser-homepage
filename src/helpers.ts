@@ -90,7 +90,6 @@ export function switchToWork(data: LinkList): void {
           switchModes(data);
         }
       });
-      setTimeout(() => {}, parseInt(minutes) * 600);
     }
   });
 }
@@ -161,15 +160,24 @@ export function init(data: LinkList): void {
       '#timer-button'
     ) as HTMLButtonElement;
     timerButton.addEventListener('click', () => {
-      const minutes = prompt('How many minutes is the break?');
+      const minutes = prompt('How many minutes to disable bonfire mode?');
       if (minutes != null) {
         window.removeEventListener('keydown', (e) => {
           if (e.key == 'w') {
             switchModes(data);
           }
         });
-        setTimeout(() => {}, parseInt(minutes) * 600);
       }
     });
   }
 }
+
+export function addSwitchModeEventListener(data: LinkList): void {
+  window.addEventListener('keydown', (e) => {
+    if (e.key == 'w') {
+      switchModes(data);
+    }
+  });
+}
+
+export function workTimer(): EventListener {}
