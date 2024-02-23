@@ -146,6 +146,29 @@ export function createTimerButton(): HTMLButtonElement {
   const button = document.createElement('button');
   button.setAttribute('id', 'timer-button');
   button.setAttribute('data-directory', 'work');
-  button.innerHTML = '&#x23F2;';
+  button.textContent = 'Timer';
+  return button;
+}
+
+export function createSwitchBonfireButton(): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.setAttribute('id', 'bonfire-button');
+  button.setAttribute('data-directory', 'bonfire');
+  button.textContent = 'Bonfire';
+  return button;
+}
+
+export function createSwitchWorkButton(): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.setAttribute('id', 'bonfire-button');
+  button.setAttribute('data-button', 'work');
+  button.textContent = 'Bonfire';
+  return button;
+}
+
+export function createOpenComicsDialogButton(): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.setAttribute('id', 'open-comics-dialog-button');
+  button.textContent = 'Comic Strips';
   return button;
 }
