@@ -145,7 +145,7 @@ export function createWorkFavIcon(): void {
 export function createTimerButton(): HTMLButtonElement {
   const button = document.createElement('button');
   button.setAttribute('id', 'timer-button');
-  button.setAttribute('data-directory', 'work');
+  button.setAttribute('data-button', 'work');
   button.textContent = 'Timer';
   return button;
 }
