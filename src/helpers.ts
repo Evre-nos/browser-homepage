@@ -2,8 +2,7 @@ import {
   createWorkLinksEl,
   createBonfireLinkEl,
   createTimerButton,
-  createSwitchBonfireButton,
-  createSwitchWorkButton,
+  createSwitchModesButton,
   createOpenComicsDialogButton,
 } from './components';
 import { LinkList } from './types';
@@ -17,9 +16,36 @@ export function clearChildNodes(el: HTMLElement): void {
 export function appendButtons(): void {
   const buttonContainer =
     (document.querySelector('.button-container') as HTMLElement) || null;
-  buttonContainer.appendChild(createSwitchBonfireButton());
-  buttonContainer.appendChild(createSwitchWorkButton());
+  buttonContainer.appendChild(createSwitchModesButton());
   buttonContainer.appendChild(createOpenComicsDialogButton());
+  const picture =
+    (document.getElementById('picture') as HTMLImageElement) || null;
+  if (picture.dataset.picture == 'work') {
+    buttonContainer.appendChild(createTimerButton());
+  }
+}
+
+export function initButtons(data: LinkList): void {
+  const switchModesButton =
+    (document.getElementById('switch-modes-button') as HTMLButtonElement) ||
+    null;
+  const comicsButton =
+    (document.getElementById(
+      'open-comics-dialog-button'
+    ) as HTMLButtonElement) || null;
+  const timerButton =
+    (document.getElementById('timer-button') as HTMLButtonElement) || null;
+
+  switchModesButton?.addEventListener('click', () => {
+    switchModes(data);
+  });
+  comicsButton?.addEventListener('click', () => {
+    console.log('Open Dialog Window TODO');
+  });
+
+  timerButton?.addEventListener('click', () => {
+    console.log('timer go ding');
+  });
 }
 
 export async function fetchWeather(date: Date): Promise<string> {
@@ -66,8 +92,6 @@ export function switchToWork(data: LinkList): void {
     (document.querySelector('[data-info-bar]') as HTMLDivElement) || null;
   const body =
     (document.querySelector('[data-body]') as HTMLBodyElement) || null;
-  const directoryContainer =
-    (document.getElementById('directory-container') as HTMLDivElement) || null;
   const directory =
     (document.querySelector('[data-directory]') as HTMLParagraphElement) ||
     null;
@@ -77,7 +101,6 @@ export function switchToWork(data: LinkList): void {
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
   localStorage.setItem('mode', 'work');
-  const timerButton = createTimerButton();
   rightContainer.removeChild(linksContainer);
   pic.removeAttribute('data-picture');
   pic.setAttribute('data-picture', 'work');
@@ -90,19 +113,8 @@ export function switchToWork(data: LinkList): void {
   directory.removeAttribute('data-directory');
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
-  directoryContainer.appendChild(timerButton);
   tab.textContent = '~/work';
   rightContainer.appendChild(createWorkLinksEl(data));
-  timerButton.addEventListener('click', () => {
-    const minutes = prompt('How many minutes is the break?');
-    if (minutes != null) {
-      window.removeEventListener('keydown', (e) => {
-        if (e.key == 'w') {
-          switchModes(data);
-        }
-      });
-    }
-  });
 }
 
 export function switchToBonfire(data: LinkList): void {
@@ -143,43 +155,40 @@ export function switchToBonfire(data: LinkList): void {
 }
 
 export function switchModes(data: LinkList) {
+  const buttonContainer =
+    (document.querySelector('.button-container') as HTMLDivElement) || null;
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
   if (title.dataset.listTitle == 'work') {
+    clearChildNodes(buttonContainer);
     switchToBonfire(data);
+    appendButtons();
+    initButtons(data);
   } else {
+    clearChildNodes(buttonContainer);
     switchToWork(data);
+    appendButtons();
+    initButtons(data);
   }
 }
 
 export function init(data: LinkList): void {
-  appendButtons();
   const linkContainer =
     (document.querySelector('.link-container') as HTMLElement) || null;
   if (
     localStorage.getItem('mode') == null ||
     localStorage.getItem('mode') == 'bonfire'
   ) {
+    appendButtons();
     const initStartMode = createBonfireLinkEl(data);
     linkContainer.appendChild(initStartMode);
     switchToBonfire(data);
+    initButtons(data);
   } else if (localStorage.getItem('mode') == 'work') {
+    appendButtons();
     const initStartMode = createWorkLinksEl(data);
     linkContainer.appendChild(initStartMode);
-    switchToWork(data);
-    const timerButton = document.querySelector(
-      '#timer-button'
-    ) as HTMLButtonElement;
-    timerButton.addEventListener('click', () => {
-      const minutes = prompt('How many minutes to disable bonfire mode?');
-      if (minutes != null) {
-        window.removeEventListener('keydown', (e) => {
-          if (e.key == 'w') {
-            switchModes(data);
-          }
-        });
-      }
-    });
+    initButtons(data);
   }
 }
 
