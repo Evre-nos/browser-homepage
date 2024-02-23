@@ -2,6 +2,9 @@ import {
   createWorkLinksEl,
   createBonfireLinkEl,
   createTimerButton,
+  createSwitchBonfireButton,
+  createSwitchWorkButton,
+  createOpenComicsDialogButton,
 } from './components';
 import { LinkList } from './types';
 
@@ -9,6 +12,14 @@ export function clearChildNodes(el: HTMLElement): void {
   while (el.firstChild) {
     el.removeChild(el.firstChild);
   }
+}
+
+export function appendButtons(): void {
+  const buttonContainer =
+    (document.querySelector('.button-container') as HTMLElement) || null;
+  buttonContainer.appendChild(createSwitchBonfireButton());
+  buttonContainer.appendChild(createSwitchWorkButton());
+  buttonContainer.appendChild(createOpenComicsDialogButton());
 }
 
 export async function fetchWeather(date: Date): Promise<string> {
@@ -62,7 +73,7 @@ export function switchToWork(data: LinkList): void {
     null;
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
   const rightContainer =
-    (document.querySelector('.right-container') as HTMLElement) || null;
+    (document.querySelector('.link-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
   localStorage.setItem('mode', 'work');
@@ -109,7 +120,7 @@ export function switchToBonfire(data: LinkList): void {
     (document.getElementById('directory-container') as HTMLDivElement) || null;
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
   const rightContainer =
-    (document.querySelector('.right-container') as HTMLElement) || null;
+    (document.querySelector('.link-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
   localStorage.setItem('mode', 'bonfire');
@@ -134,7 +145,6 @@ export function switchToBonfire(data: LinkList): void {
 export function switchModes(data: LinkList) {
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
-
   if (title.dataset.listTitle == 'work') {
     switchToBonfire(data);
   } else {
@@ -143,18 +153,19 @@ export function switchModes(data: LinkList) {
 }
 
 export function init(data: LinkList): void {
-  const rightContainer =
-    (document.querySelector('.right-container') as HTMLElement) || null;
+  appendButtons();
+  const linkContainer =
+    (document.querySelector('.link-container') as HTMLElement) || null;
   if (
     localStorage.getItem('mode') == null ||
     localStorage.getItem('mode') == 'bonfire'
   ) {
     const initStartMode = createBonfireLinkEl(data);
-    rightContainer.appendChild(initStartMode);
+    linkContainer.appendChild(initStartMode);
     switchToBonfire(data);
   } else if (localStorage.getItem('mode') == 'work') {
     const initStartMode = createWorkLinksEl(data);
-    rightContainer.appendChild(initStartMode);
+    linkContainer.appendChild(initStartMode);
     switchToWork(data);
     const timerButton = document.querySelector(
       '#timer-button'
@@ -180,4 +191,4 @@ export function addSwitchModeEventListener(data: LinkList): void {
   });
 }
 
-export function workTimer(): EventListener {}
+// export function workTimer(): EventListener {}

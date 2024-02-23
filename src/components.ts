@@ -153,16 +153,16 @@ export function createTimerButton(): HTMLButtonElement {
 export function createSwitchBonfireButton(): HTMLButtonElement {
   const button = document.createElement('button');
   button.setAttribute('id', 'bonfire-button');
-  button.setAttribute('data-directory', 'bonfire');
+  button.setAttribute('data-button', 'bonfire');
   button.textContent = 'Bonfire';
   return button;
 }
 
 export function createSwitchWorkButton(): HTMLButtonElement {
   const button = document.createElement('button');
-  button.setAttribute('id', 'bonfire-button');
+  button.setAttribute('id', 'work-button');
   button.setAttribute('data-button', 'work');
-  button.textContent = 'Bonfire';
+  button.textContent = 'Work';
   return button;
 }
 

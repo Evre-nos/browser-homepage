@@ -1,6 +1,17 @@
 @use 'abstracts/fonts' as f;
 @use 'abstracts/colors' as c;
 
+button[data-button='bonfire'] {
+  font-family: f.$toshiba-sat;
+  background-color: c.$rose-ebony;
+  color: c.$champagne-pink;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$champagne-pink;
+  outline: none;
+  padding: 0.5rem;
+}
+
 [data-directory='bonfire'] {
   font-family: f.$toshiba-sat;
   color: c.$champagne-pink;

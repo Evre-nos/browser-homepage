@@ -1,5 +1,5 @@
 import linkData from './assets/links.json';
-import { fetchWeather, init, addSwitchModeEventListener } from './helpers';
+import { fetchWeather, init } from './helpers';
 import { LinkList } from './types';
 
 const links: LinkList = {
@@ -35,5 +35,3 @@ weather.then((data: string) => {
 });
 
 init(links);
-
-window.addEventListener('keydown', addSwitchModeEventListener(), true);
