@@ -150,19 +150,11 @@ export function createTimerButton(): HTMLButtonElement {
   return button;
 }
 
-export function createSwitchBonfireButton(): HTMLButtonElement {
+export function createSwitchModesButton(): HTMLButtonElement {
   const button = document.createElement('button');
-  button.setAttribute('id', 'bonfire-button');
+  button.setAttribute('id', 'switch-modes-button');
   button.setAttribute('data-button', 'bonfire');
-  button.textContent = 'Bonfire';
-  return button;
-}
-
-export function createSwitchWorkButton(): HTMLButtonElement {
-  const button = document.createElement('button');
-  button.setAttribute('id', 'work-button');
-  button.setAttribute('data-button', 'work');
-  button.textContent = 'Work';
+  button.textContent = 'Switch Modes';
   return button;
 }
 
