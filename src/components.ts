@@ -164,3 +164,8 @@ export function createOpenComicsDialogButton(): HTMLButtonElement {
   button.textContent = 'Comic Strips';
   return button;
 }
+
+export function createComicsDialog(): HTMLDialogElement {
+  const dialogWindow = document.createElement('dialog');
+  return dialogWindow;
+}
