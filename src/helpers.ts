@@ -100,6 +100,8 @@ export function switchToWork(data: LinkList): void {
     (document.querySelector('.link-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
+  const comicsButton =
+    (document.getElementById('snoopy') as HTMLImageElement) || null;
   localStorage.setItem('mode', 'work');
   rightContainer.removeChild(linksContainer);
   pic.removeAttribute('data-picture');
@@ -114,6 +116,7 @@ export function switchToWork(data: LinkList): void {
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
   tab.textContent = '~/work';
+  comicsButton.dataset.comic = 'work';
   rightContainer.appendChild(createWorkLinksEl(data));
 }
 
@@ -135,6 +138,8 @@ export function switchToBonfire(data: LinkList): void {
     (document.querySelector('.link-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
+  const comicsButton =
+    (document.getElementById('snoopy') as HTMLImageElement) || null;
   localStorage.setItem('mode', 'bonfire');
   rightContainer.removeChild(linksContainer);
   pic.removeAttribute('data-picture');
@@ -152,6 +157,8 @@ export function switchToBonfire(data: LinkList): void {
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
   tab.textContent = '~/bonfire';
+  comicsButton.dataset.comic = 'bonfire';
+  comicsButton.setAttribute('src', './src/assets/img/snoopy-vector.svg');
 }
 
 export function switchModes(data: LinkList) {

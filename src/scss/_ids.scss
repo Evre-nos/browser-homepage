@@ -26,3 +26,19 @@
   outline: none;
   padding: 0.5rem;
 }
+
+#snoopy {
+  background-color: c.$rose-ebony;
+  color: c.$champagne-pink;
+  fill: currentColor;
+  height: 30px;
+  width: 30px;
+}
+
+#snoopy:hover {
+  color: pink;
+}
+
+#snoopy[data-comic='work'] {
+  filter: invert(65%) sepia(74%) saturate(551%) hue-rotate(205deg) brightness(103%) contrast(94%);
+}
