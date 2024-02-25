@@ -9,6 +9,7 @@ import workFav32 from './assets/img/workFavicon/favicon-32x32.png';
 import workFav16 from './assets/img/workFavicon/favicon-16x16.png';
 import workManifest from './assets/img/workFavicon/apple-touch-icon.png';
 import workMaskIcon from './assets/img/workFavicon/apple-touch-icon.png';
+import { initButtons } from './helpers';
 
 export function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
@@ -163,6 +164,81 @@ export function createOpenComicsDialogButton(): HTMLButtonElement {
   button.setAttribute('id', 'open-comics-dialog-button');
   button.textContent = 'Comic Strips';
   return button;
+}
+
+export function createTimerDialogWindow(data: LinkList): HTMLDialogElement {
+  const dialogHeader = document.createElement('h2');
+  const dialogWindow = document.createElement('dialog');
+  const inputContainer = document.createElement('div');
+  const minutesDiv = document.createElement('div');
+  const secondsDiv = document.createElement('div');
+  const minuteHeader = document.createElement('h3');
+  const secondsHeader = document.createElement('h3');
+  const minutesInput = document.createElement('input');
+  const secondsInput = document.createElement('input');
+  const startButton = document.createElement('button');
+
+  dialogHeader.textContent = 'Time to Work';
+  minuteHeader.textContent = 'Minutes: ';
+  secondsHeader.textContent = 'Seconds: ';
+  startButton.textContent = 'Start Timer';
+
+  inputContainer.setAttribute('id', 'timer-input-container');
+  dialogWindow.setAttribute('id', 'timer-dialog');
+  startButton.setAttribute('id', 'start-timer-button');
+
+  startButton.addEventListener('click', () => {
+    const lightSwitch =
+      (document.getElementById('light-switch') as HTMLImageElement) || null;
+    const minutes = parseInt(minutesInput.value) * 60000;
+    const seconds = parseInt(secondsInput.value) * 1000;
+    const time = minutes + seconds;
+    lightSwitch.remove();
+    setTimeout(function () {
+      const lightSwitch = createLightSwitchButton();
+      const directoryContainer =
+        (document.getElementById('directory-container') as HTMLDivElement) ||
+        null;
+      directoryContainer.appendChild(lightSwitch);
+      initButtons(data);
+      console.log(`Timer: ${time}`);
+    }, time);
+  });
+
+  minutesInput.type = 'number';
+  minutesInput.min = '1';
+  minutesInput.max = '60';
+  minutesInput.setAttribute('id', 'minutes-input');
+
+  secondsInput.min = '1';
+  secondsInput.max = '60';
+  secondsInput.type = 'number';
+  secondsInput.setAttribute('id', 'seconds-input');
+
+  minutesDiv.setAttribute('id', 'minutes-div');
+  minutesDiv.appendChild(minuteHeader);
+  minutesDiv.appendChild(minutesInput);
+
+  secondsDiv.setAttribute('id', 'seconds-div');
+  secondsDiv.appendChild(secondsHeader);
+  secondsDiv.appendChild(secondsInput);
+
+  inputContainer.appendChild(minutesDiv);
+  inputContainer.appendChild(secondsDiv);
+
+  dialogWindow.appendChild(dialogHeader);
+  dialogWindow.appendChild(inputContainer);
+  dialogWindow.appendChild(startButton);
+
+  return dialogWindow;
+}
+
+export function createLightSwitchButton(): HTMLImageElement {
+  const img = document.createElement('img');
+  img.alt = 'light-switch';
+  img.id = 'light-switch';
+  img.setAttribute('data-mode', 'bonfire');
+  return img;
 }
 
 export function createComicsDialog(): HTMLDialogElement {

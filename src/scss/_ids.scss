@@ -6,6 +6,12 @@
   border-radius: 5px;
 }
 
+#directory-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 #open-comics-dialog-button {
   font-family: f.$comics-neue;
   background-color: c.$lala-green;
@@ -41,4 +47,38 @@
 
 #snoopy[data-comic='work'] {
   filter: invert(65%) sepia(74%) saturate(551%) hue-rotate(205deg) brightness(103%) contrast(94%);
+}
+
+#light-switch {
+  height: 50px;
+  width: 50px;
+}
+
+#timer-dialog {
+  height: 300px;
+  width: 300px;
+}
+
+#timer-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#minutes-div,
+#seconds-div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#minutes-div>input,
+#seconds-div>input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: textfield;
+  text-align: center;
+  width: 10rem;
+  height: 1rem;
 }

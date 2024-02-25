@@ -55,10 +55,26 @@ button[data-button='work'] {
   color: c.$cp-mauve;
 }
 
+#light-switch[data-comic='work'] {
   background: none;
-  filter: invert(86%) sepia(11%) saturate(529%) hue-rotate(190deg) brightness(99%) contrast(93%);
+  filter: invert(83%) sepia(26%) saturate(5069%) hue-rotate(204deg) brightness(103%) contrast(94%);
 }
 
+#light-switch[data-comic='work']:hover {
+  background: none;
+  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg) brightness(100%) contrast(97%);
+  cursor: pointer;
+}
+
+#timer {
+  background: none;
+  filter: invert(86%) sepia(8%) saturate(894%) hue-rotate(193deg) brightness(98%) contrast(95%);
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+#timer:hover {
   background: none;
   filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg) brightness(100%) contrast(97%);
   cursor: pointer;
