@@ -93,6 +93,7 @@ export function switchToWork(data: LinkList): void {
     (document.getElementById('start-timer-button') as HTMLButtonElement) ||
     null;
   startTimerButton.addEventListener('click', () => {
+    timerDialogWindow.close();
     const minuteInput: string = (
       document.getElementById('minutes-input') as HTMLInputElement
     ).value;
@@ -113,6 +114,7 @@ export function switchToWork(data: LinkList): void {
       lightSwitch.addEventListener('click', () => {
         switchModes(data);
       });
+      alert('Work is done!');
     }, totalTime);
   });
 }
@@ -198,11 +200,12 @@ export function init(data: LinkList): void {
     initButtons(data);
   } else if (localStorage.getItem('mode') == 'work') {
     const initStartMode = createWorkLinksEl(data);
+    linkContainer.appendChild(initStartMode);
     const lightSwitch = document.getElementById(
       'light-switch'
     ) as HTMLImageElement;
     lightSwitch.src = onSwitch;
-    linkContainer.appendChild(initStartMode);
+    switchToWork(data);
     initButtons(data);
   }
 }
