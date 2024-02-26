@@ -9,7 +9,8 @@ import workFav32 from './assets/img/workFavicon/favicon-32x32.png';
 import workFav16 from './assets/img/workFavicon/favicon-16x16.png';
 import workManifest from './assets/img/workFavicon/apple-touch-icon.png';
 import workMaskIcon from './assets/img/workFavicon/apple-touch-icon.png';
-import { initButtons } from './helpers';
+import onSwtich from './assets/img/on-switch.svg';
+import offSwitch from './assets/img/off-switch.svg';
 
 export function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
@@ -166,7 +167,7 @@ export function createOpenComicsDialogButton(): HTMLButtonElement {
   return button;
 }
 
-export function createTimerDialogWindow(data: LinkList): HTMLDialogElement {
+export function createTimerDialogWindow(): HTMLDialogElement {
   const dialogHeader = document.createElement('h2');
   const dialogWindow = document.createElement('dialog');
   const inputContainer = document.createElement('div');
@@ -187,24 +188,6 @@ export function createTimerDialogWindow(data: LinkList): HTMLDialogElement {
   dialogWindow.setAttribute('id', 'timer-dialog');
   startButton.setAttribute('id', 'start-timer-button');
 
-  startButton.addEventListener('click', () => {
-    const lightSwitch =
-      (document.getElementById('light-switch') as HTMLImageElement) || null;
-    const minutes = parseInt(minutesInput.value) * 60000;
-    const seconds = parseInt(secondsInput.value) * 1000;
-    const time = minutes + seconds;
-    lightSwitch.remove();
-    setTimeout(function () {
-      const lightSwitch = createLightSwitchButton();
-      const directoryContainer =
-        (document.getElementById('directory-container') as HTMLDivElement) ||
-        null;
-      directoryContainer.appendChild(lightSwitch);
-      initButtons(data);
-      console.log(`Timer: ${time}`);
-    }, time);
-  });
-
   minutesInput.type = 'number';
   minutesInput.min = '1';
   minutesInput.max = '60';
@@ -214,6 +197,7 @@ export function createTimerDialogWindow(data: LinkList): HTMLDialogElement {
   secondsInput.max = '60';
   secondsInput.type = 'number';
   secondsInput.setAttribute('id', 'seconds-input');
+  secondsInput.setAttribute('required', '');
 
   minutesDiv.setAttribute('id', 'minutes-div');
   minutesDiv.appendChild(minuteHeader);
@@ -237,7 +221,13 @@ export function createLightSwitchButton(): HTMLImageElement {
   const img = document.createElement('img');
   img.alt = 'light-switch';
   img.id = 'light-switch';
-  img.setAttribute('data-mode', 'bonfire');
+  if (localStorage.getItem('mode') == 'work') {
+    img.src = onSwtich;
+    img.dataset.mode = 'work';
+  } else {
+    img.src = offSwitch;
+    img.dataset.mode = 'bonfire';
+  }
   return img;
 }
 
