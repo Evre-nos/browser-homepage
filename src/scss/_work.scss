@@ -1,6 +1,16 @@
 @use 'abstracts/colors' as c;
 @use 'abstracts/fonts' as f;
 
+button[data-button='work'] {
+  background-color: c.$cp-surface0;
+  color: c.$cp-text;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$cp-mauve;
+  outline: none;
+  padding: 0.5rem;
+}
+
 [data-picture='work'] {
   border: 3px solid c.$cp-mauve;
   content: url('../assets/img/hhkbGuy.png');
@@ -43,4 +53,33 @@
 [data-directory='work'] {
   font-family: f.$jost-font;
   color: c.$cp-mauve;
+}
+
+#light-switch[data-mode='work'] {
+  background: none;
+  filter: invert(83%) sepia(26%) saturate(5069%) hue-rotate(204deg)
+    brightness(103%) contrast(94%);
+}
+
+#light-switch[data-mode='work']:hover {
+  background: none;
+  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg)
+    brightness(100%) contrast(97%);
+  cursor: pointer;
+}
+
+#timer {
+  background: none;
+  filter: invert(86%) sepia(8%) saturate(894%) hue-rotate(193deg)
+    brightness(98%) contrast(95%);
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+#timer:hover {
+  background: none;
+  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg)
+    brightness(100%) contrast(97%);
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import linkData from './assets/links.json';
-import { switchModes, fetchWeather, init } from './helpers';
+import { fetchWeather, init } from './helpers';
 import { LinkList } from './types';
 
 const links: LinkList = {
@@ -12,7 +12,7 @@ const currentDay = new Date(
   date.getFullYear(),
   date.getMonth(),
   date.getDate(),
-  date.getDay(),
+  date.getDay()
 ).toLocaleDateString('en-US', {
   year: 'numeric',
   day: 'numeric',
@@ -35,9 +35,3 @@ weather.then((data: string) => {
 });
 
 init(links);
-
-window.addEventListener('keydown', (e) => {
-  if (e.key == 'w') {
-    switchModes(links);
-  }
-});

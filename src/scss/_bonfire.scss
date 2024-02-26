@@ -1,6 +1,17 @@
 @use 'abstracts/fonts' as f;
 @use 'abstracts/colors' as c;
 
+button[data-button='bonfire'] {
+  font-family: f.$toshiba-sat;
+  background-color: c.$rose-ebony;
+  color: c.$champagne-pink;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$champagne-pink;
+  outline: none;
+  padding: 0.5rem;
+}
+
 [data-directory='bonfire'] {
   font-family: f.$toshiba-sat;
   color: c.$champagne-pink;
@@ -43,4 +54,17 @@
   a:hover {
     color: c.$solaire-green;
   }
+}
+
+#light-switch[data-mode='bonfire'] {
+  background: none;
+  filter: invert(85%) sepia(11%) saturate(299%) hue-rotate(328deg)
+    brightness(107%) contrast(83%);
+}
+
+#light-switch[data-mode='bonfire']:hover {
+  background: none;
+  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg)
+    brightness(100%) contrast(97%);
+  cursor: pointer;
 }
