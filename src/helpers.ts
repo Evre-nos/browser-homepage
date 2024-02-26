@@ -58,7 +58,7 @@ export function switchToWork(data: LinkList): void {
     (document.getElementById('light-switch') as HTMLImageElement) || null;
   localStorage.setItem('mode', 'work');
   const timerButton = document.createElement('img') as HTMLImageElement;
-  const timerDialogWindow = createTimerDialogWindow(data);
+  const timerDialogWindow = createTimerDialogWindow();
   body.appendChild(timerDialogWindow);
   timerButton.src = timer;
   timerButton.setAttribute('id', 'timer');
@@ -68,8 +68,8 @@ export function switchToWork(data: LinkList): void {
   });
   rightContainer.removeChild(linksContainer);
   lightSwitch.src = onSwitch;
-  lightSwitch.removeAttribute('data-comic');
-  lightSwitch.setAttribute('data-comic', 'work');
+  lightSwitch.removeAttribute('data-mode');
+  lightSwitch.setAttribute('data-mode', 'work');
   pic.removeAttribute('data-picture');
   pic.setAttribute('data-picture', 'work');
   title.removeAttribute('data-list-title');
@@ -149,8 +149,8 @@ export function switchToBonfire(data: LinkList): void {
   const lightSwitch = document.getElementById(
     'light-switch'
   ) as HTMLImageElement;
-  lightSwitch.removeAttribute('data-comic');
-  lightSwitch.setAttribute('data-comic', 'bonfire');
+  lightSwitch.removeAttribute('data-mode');
+  lightSwitch.setAttribute('data-mode', 'bonfire');
   lightSwitch.src = offSwitch;
   rightContainer.removeChild(linksContainer);
   pic.removeAttribute('data-picture');
