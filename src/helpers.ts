@@ -2,6 +2,7 @@ import {
   createWorkLinksEl,
   createBonfireLinkEl,
   createTimerDialogWindow,
+  createLightSwitchButton,
 } from './components';
 import { LinkList } from './types';
 import onSwitch from './assets/img/on-switch.svg';
@@ -83,6 +84,37 @@ export function switchToWork(data: LinkList): void {
   tab.textContent = '~/work';
   infoBar.appendChild(timerButton);
   rightContainer.appendChild(createWorkLinksEl(data));
+
+  /**
+   * Start Timer Button in Modal Window is recieved at the end after everything
+   * else has loaded so it doesn't return null
+   */
+  const startTimerButton =
+    (document.getElementById('start-timer-button') as HTMLButtonElement) ||
+    null;
+  startTimerButton.addEventListener('click', () => {
+    const minuteInput: string = (
+      document.getElementById('minutes-input') as HTMLInputElement
+    ).value;
+    const secondsInput: string = (
+      document.getElementById('seconds-input') as HTMLInputElement
+    ).value;
+    const minutes = Number(+minuteInput * 60000);
+    const seconds = Number(+secondsInput * 1000);
+
+    const totalTime = minutes + seconds;
+    console.log(totalTime);
+
+    lightSwitch.remove();
+    setTimeout(() => {
+      const directoryContainer = directory.parentNode;
+      const lightSwitch = createLightSwitchButton();
+      directoryContainer?.appendChild(lightSwitch);
+      lightSwitch.addEventListener('click', () => {
+        switchModes(data);
+      });
+    }, totalTime);
+  });
 }
 
 export function switchToBonfire(data: LinkList): void {
