@@ -33,30 +33,30 @@
   padding: 0.5rem;
 }
 
-#snoopy {
-  background-color: c.$rose-ebony;
-  color: c.$champagne-pink;
-  fill: currentColor;
-  height: 30px;
-  width: 30px;
-}
-
-#snoopy:hover {
-  color: pink;
-}
-
-#snoopy[data-comic='work'] {
-  filter: invert(65%) sepia(74%) saturate(551%) hue-rotate(205deg) brightness(103%) contrast(94%);
-}
-
 #light-switch {
   height: 50px;
   width: 50px;
 }
 
 #timer-dialog {
-  height: 300px;
-  width: 300px;
+  z-index: auto;
+  border-radius: 0.25rem;
+  border-color: c.$cp-mauve;
+  background-color: c.$cp-surface0;
+  color: c.$cp-text;
+}
+
+#start-timer-button {
+  background-color: c.$cp-green;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+#start-timer-button:hover {
+  cursor: pointer;
+  background-color: c.$cp-peach;
 }
 
 #timer-input-container {
@@ -72,13 +72,12 @@
   align-items: center;
 }
 
-#minutes-div>input,
-#seconds-div>input {
+#minutes-div > input,
+#seconds-div > input {
   display: flex;
   justify-content: center;
   align-items: center;
   appearance: textfield;
-  text-align: center;
   width: 10rem;
   height: 1rem;
 }
