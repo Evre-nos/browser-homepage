@@ -141,10 +141,10 @@
       "url": "https://disneyplus.com"
     },
     {
-      "name": "jellyfin vue",
+      "name": "lidarr",
       "group": "3",
       "mode": "bonfire",
-      "url": "https://jf-vue.pages.dev/#/"
+      "url": "http://localhost:8686"
     },
     {
       "name": "radarr",
