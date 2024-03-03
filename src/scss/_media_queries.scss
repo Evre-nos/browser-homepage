@@ -126,20 +126,3 @@
     display: flex;
   }
 }
-
-@media only screen and (min-width: b.$xxl-devices) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr;
-    grid-template-areas: '. left right .';
-    column-gap: 80px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .info-bar {
-    display: flex;
-    font-size: 1.2rem;
-    justify-content: space-around;
-  }
-}
