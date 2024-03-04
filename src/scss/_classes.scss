@@ -1,3 +1,6 @@
+@use 'abstracts/fonts' as f;
+@use 'abstracts/colors' as c;
+
 .title {
   font-size: 1.7rem;
   text-align: center;
@@ -28,12 +31,11 @@
   min-height: 90%;
 }
 
-.left-container {
+.picture-container {
   grid-area: left;
-  aspect-ratio: 1/1;
 }
 
-.right-container {
+.link-container {
   grid-area: right;
 }
 
@@ -48,4 +50,15 @@
   padding-top: 20px;
   padding-bottom: 20px;
   gap: 3rem;
+}
+
+.open-comics-dialog-button {
+  font-family: f.$jost-font;
+  background-color: c.$rose-ebony;
+  color: c.$champagne-pink;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$cp-mauve;
+  outline: none;
+  padding: 0.5rem;
 }

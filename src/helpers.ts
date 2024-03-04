@@ -1,10 +1,33 @@
-import { createWorkLinksEl, createBonfireLinkEl } from './components';
+import {
+  createWorkLinksEl,
+  createBonfireLinkEl,
+  createTimerDialogWindow,
+  createLightSwitchButton,
+} from './components';
 import { LinkList } from './types';
+import onSwitch from './assets/img/on-switch.svg';
+import offSwitch from './assets/img/off-switch.svg';
+import timer from './assets/img/timer.svg';
 
 export function clearChildNodes(el: HTMLElement): void {
   while (el.firstChild) {
     el.removeChild(el.firstChild);
   }
+}
+
+export function initButtons(data: LinkList): void {
+  const lightSwitch =
+    (document.getElementById('light-switch') as HTMLImageElement) || null;
+
+  if (localStorage.getItem('mode') == 'bonfire') {
+    lightSwitch.src = offSwitch;
+  }
+  if (localStorage.getItem('mode') == 'work') {
+    lightSwitch.src = onSwitch;
+  }
+  lightSwitch.addEventListener('click', () => {
+    switchModes(data);
+  });
 }
 
 export async function fetchWeather(date: Date): Promise<string> {
@@ -13,34 +36,6 @@ export async function fetchWeather(date: Date): Promise<string> {
   const response = await fetch(url);
   const data = await response.json();
   return `${data.hourly.temperature_2m[date.getHours()]}`;
-}
-
-export function createBonfireFavIcon(): void {
-  const appleTouch = document.getElementById('appleTouch') as HTMLLinkElement;
-  const icon32 = document.getElementById('icon32') as HTMLLinkElement;
-  const icon16 = document.getElementById('icon16') as HTMLLinkElement;
-  const mainifest = document.getElementById('manifest') as HTMLLinkElement;
-  const maskIcon = document.getElementById('maskIcon') as HTMLLinkElement;
-
-  appleTouch.href = '/src/assets/img/bonfireFavicon/apple-touch-icon.png';
-  icon32.href = '/src/assets/img/bonfireFavicon/favicon-32x32.png';
-  icon16.href = '/src/assets/img/bonfireFavicon/favicon-16x16.png';
-  mainifest.href = '/src/assets/img/bonfireFavicon/site.manifest';
-  maskIcon.href = '/src/assets/img/bonfireFavicon/safari-pinned-tab.svg';
-}
-
-export function createWorkFavIcon(): void {
-  const appleTouch = document.getElementById('appleTouch') as HTMLLinkElement;
-  const icon32 = document.getElementById('icon32') as HTMLLinkElement;
-  const icon16 = document.getElementById('icon16') as HTMLLinkElement;
-  const mainifest = document.getElementById('manifest') as HTMLLinkElement;
-  const maskIcon = document.getElementById('maskIcon') as HTMLLinkElement;
-
-  appleTouch.href = '/src/assets/img/workFavicon/apple-touch-icon.png';
-  icon32.href = '/src/assets/img/workFavicon/favicon-32x32.png';
-  icon16.href = '/src/assets/img/workFavicon/favicon-16x16.png';
-  mainifest.href = '/src/assets/img/workFavicon/site.manifest';
-  maskIcon.href = '/src/assets/img/workFavicon/safari-pinned-tab.svg';
 }
 
 export function switchToWork(data: LinkList): void {
@@ -56,11 +51,25 @@ export function switchToWork(data: LinkList): void {
     null;
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
   const rightContainer =
-    (document.querySelector('.right-container') as HTMLElement) || null;
+    (document.querySelector('.link-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
+  const lightSwitch =
+    (document.getElementById('light-switch') as HTMLImageElement) || null;
   localStorage.setItem('mode', 'work');
+  const timerButton = document.createElement('img') as HTMLImageElement;
+  const timerDialogWindow = createTimerDialogWindow();
+  body.appendChild(timerDialogWindow);
+  timerButton.src = timer;
+  timerButton.setAttribute('id', 'timer');
+  timerButton.setAttribute('data-mode', 'work');
+  timerButton.addEventListener('click', () => {
+    timerDialogWindow.showModal();
+  });
   rightContainer.removeChild(linksContainer);
+  lightSwitch.src = onSwitch;
+  lightSwitch.removeAttribute('data-mode');
+  lightSwitch.setAttribute('data-mode', 'work');
   pic.removeAttribute('data-picture');
   pic.setAttribute('data-picture', 'work');
   title.removeAttribute('data-list-title');
@@ -73,7 +82,40 @@ export function switchToWork(data: LinkList): void {
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
   tab.textContent = '~/work';
+  infoBar.appendChild(timerButton);
   rightContainer.appendChild(createWorkLinksEl(data));
+
+  /**
+   * Start Timer Button in Modal Window is recieved at the end after everything
+   * else has loaded so it doesn't return null
+   */
+  const startTimerButton =
+    (document.getElementById('start-timer-button') as HTMLButtonElement) ||
+    null;
+  startTimerButton.addEventListener('click', () => {
+    timerDialogWindow.close();
+    const minuteInput: string = (
+      document.getElementById('minutes-input') as HTMLInputElement
+    ).value;
+    const secondsInput: string = (
+      document.getElementById('seconds-input') as HTMLInputElement
+    ).value;
+    const minutes = Number(+minuteInput * 60000);
+    const seconds = Number(+secondsInput * 1000);
+
+    const totalTime = minutes + seconds;
+    console.log(totalTime);
+
+    lightSwitch.remove();
+    setTimeout(() => {
+      const lightSwitch = createLightSwitchButton();
+      infoBar?.appendChild(lightSwitch);
+      lightSwitch.addEventListener('click', () => {
+        switchModes(data);
+      });
+      alert('Work is done!');
+    }, totalTime);
+  });
 }
 
 export function switchToBonfire(data: LinkList): void {
@@ -87,12 +129,30 @@ export function switchToBonfire(data: LinkList): void {
   const directory =
     (document.querySelector('[data-directory]') as HTMLParagraphElement) ||
     null;
+  const directoryContainer =
+    (document.getElementById('directory-container') as HTMLDivElement) || null;
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
   const rightContainer =
-    (document.querySelector('.right-container') as HTMLElement) || null;
+    (document.querySelector('.link-container') as HTMLElement) || null;
   const linksContainer =
     (document.querySelector('.links-container') as HTMLElement) || null;
   localStorage.setItem('mode', 'bonfire');
+  const timerButton =
+    (document.getElementById('timer') as HTMLImageElement) || null;
+  const timerDialog =
+    (document.getElementById('timer-dialog') as HTMLDialogElement) || null;
+  if (timerDialog) {
+    timerDialog.remove();
+  }
+  if (timerButton) {
+    timerButton.remove();
+  }
+  const lightSwitch = document.getElementById(
+    'light-switch'
+  ) as HTMLImageElement;
+  lightSwitch.removeAttribute('data-mode');
+  lightSwitch.setAttribute('data-mode', 'bonfire');
+  lightSwitch.src = offSwitch;
   rightContainer.removeChild(linksContainer);
   pic.removeAttribute('data-picture');
   pic.setAttribute('data-picture', 'bonfire');
@@ -104,35 +164,47 @@ export function switchToBonfire(data: LinkList): void {
   body.setAttribute('data-body', 'bonfire');
   directory.removeAttribute('data-directory');
   directory.setAttribute('data-directory', 'bonfire');
+  directoryContainer.removeChild(directoryContainer.lastElementChild as Node);
+  directoryContainer.appendChild(directory);
+  infoBar.appendChild(lightSwitch);
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
   tab.textContent = '~/bonfire';
 }
 
 export function switchModes(data: LinkList) {
-  const title =
-    (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
-
-  if (title.dataset.listTitle == 'work') {
+  if (localStorage.getItem('mode') == 'work') {
+    console.log('switch to bonfire');
     switchToBonfire(data);
   } else {
+    console.log('switch to work');
     switchToWork(data);
   }
 }
 
 export function init(data: LinkList): void {
-  const rightContainer =
-    (document.querySelector('.right-container') as HTMLElement) || null;
+  const linkContainer =
+    (document.querySelector('.link-container') as HTMLElement) || null;
   if (
     localStorage.getItem('mode') == null ||
     localStorage.getItem('mode') == 'bonfire'
   ) {
     const initStartMode = createBonfireLinkEl(data);
-    rightContainer.appendChild(initStartMode);
+    linkContainer.appendChild(initStartMode);
+    const lightSwitch = document.getElementById(
+      'light-switch'
+    ) as HTMLImageElement;
+    lightSwitch.src = offSwitch;
     switchToBonfire(data);
+    initButtons(data);
   } else if (localStorage.getItem('mode') == 'work') {
     const initStartMode = createWorkLinksEl(data);
-    rightContainer.appendChild(initStartMode);
+    linkContainer.appendChild(initStartMode);
+    const lightSwitch = document.getElementById(
+      'light-switch'
+    ) as HTMLImageElement;
+    lightSwitch.src = onSwitch;
     switchToWork(data);
+    initButtons(data);
   }
 }

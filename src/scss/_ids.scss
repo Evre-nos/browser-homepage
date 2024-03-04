@@ -1,4 +1,84 @@
+@use 'abstracts/fonts' as f;
+@use 'abstracts/colors' as c;
+
 #picture {
   max-width: 500px;
   border-radius: 5px;
+}
+
+#directory-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+#open-comics-dialog-button {
+  font-family: f.$comics-neue;
+  background-color: c.$lala-green;
+  color: c.$lala-white;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$lala-orange;
+  outline: none;
+  padding: 0.5rem;
+}
+
+#timer-button {
+  background-color: c.$background-black;
+  color: c.$lipstick-red;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  border: 2px solid c.$lipstick-red;
+  outline: none;
+  padding: 0.5rem;
+}
+
+#light-switch {
+  height: 40px;
+  width: 40px;
+}
+
+#timer-dialog {
+  z-index: auto;
+  border-radius: 0.25rem;
+  border-color: c.$cp-mauve;
+  background-color: c.$cp-surface0;
+  color: c.$cp-text;
+}
+
+#start-timer-button {
+  background-color: c.$cp-green;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+#start-timer-button:hover {
+  cursor: pointer;
+  background-color: c.$cp-peach;
+}
+
+#timer-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#minutes-div,
+#seconds-div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#minutes-div > input,
+#seconds-div > input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: textfield;
+  width: 10rem;
+  height: 1rem;
 }
