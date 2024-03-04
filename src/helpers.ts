@@ -108,9 +108,8 @@ export function switchToWork(data: LinkList): void {
 
     lightSwitch.remove();
     setTimeout(() => {
-      const directoryContainer = directory.parentNode;
       const lightSwitch = createLightSwitchButton();
-      directoryContainer?.appendChild(lightSwitch);
+      infoBar?.appendChild(lightSwitch);
       lightSwitch.addEventListener('click', () => {
         switchModes(data);
       });
@@ -167,7 +166,7 @@ export function switchToBonfire(data: LinkList): void {
   directory.setAttribute('data-directory', 'bonfire');
   directoryContainer.removeChild(directoryContainer.lastElementChild as Node);
   directoryContainer.appendChild(directory);
-  directoryContainer.appendChild(lightSwitch);
+  infoBar.appendChild(lightSwitch);
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
   tab.textContent = '~/bonfire';
