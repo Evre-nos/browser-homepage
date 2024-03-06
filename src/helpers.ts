@@ -82,7 +82,7 @@ export function switchToWork(data: LinkList): void {
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
   tab.textContent = '~/work';
-  infoBar.appendChild(timerButton);
+  infoBar.insertBefore(timerButton, infoBar.firstChild);
   rightContainer.appendChild(createWorkLinksEl(data));
 
   /**
