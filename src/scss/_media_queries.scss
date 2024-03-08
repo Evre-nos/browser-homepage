@@ -42,7 +42,7 @@
   }
 }
 
-@media only screen and (min-width: b.$sm-devices) {
+@media only screen and (min-width: b.$lg-devices) and (max-width: b.$xl-devices) {
   .main-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -82,7 +82,7 @@
   }
 }
 
-@media only screen and (min-width: b.$lg-devices) {
+@media only screen and (min-width: b.$md-devices) and (max-width: b.$lg-devices) {
   .main-container {
     display: flex;
     flex-direction: column;
