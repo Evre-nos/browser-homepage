@@ -45,7 +45,7 @@
 @media only screen and (min-width: b.$sm-devices) {
   .main-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-areas: 'left right';
     column-gap: 80px;
     justify-content: center;
