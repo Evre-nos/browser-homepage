@@ -135,10 +135,10 @@
       "url": "https://tubi.tv"
     },
     {
-      "name": "disney+",
+      "name": "jellyfin",
       "group": "2",
       "mode": "bonfire",
-      "url": "https://disneyplus.com"
+      "url": "http://localhost:8096"
     },
     {
       "name": "lidarr",
