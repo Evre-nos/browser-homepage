@@ -42,47 +42,7 @@
   }
 }
 
-@media only screen and (min-width: b.$lg-devices) and (max-width: b.$xl-devices) {
-  .main-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: 'left right';
-    column-gap: 80px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .info-bar {
-    display: flex;
-    font-size: 1.2rem;
-    justify-content: space-around;
-  }
-
-  .directory {
-    font-size: 2rem;
-  }
-
-  .links-container {
-    text-align: center;
-    gap: 0.1rem;
-    padding-top: 0px;
-  }
-
-  [data-picture] {
-    width: 100%;
-    margin: 1.5rem;
-  }
-
-  [data-list-title] {
-    font-size: 1.4rem;
-  }
-
-  [data-list-item] {
-    font-size: 1.2rem;
-  }
-}
-
-@media only screen and (min-width: b.$md-devices) and (max-width: b.$lg-devices) {
+@media only screen and (min-width: b.$sm-devices) and (max-width: b.$lg-devices) {
   .main-container {
     display: flex;
     flex-direction: column;
@@ -108,7 +68,7 @@
   }
 
   [data-picture] {
-    width: 60%;
+    width: 70%;
     margin: 1.5rem;
   }
 
@@ -121,7 +81,7 @@
   }
 }
 
-@media only screen and (min-height: b.$lg-devices) {
+@media only screen and (min-height: b.$lg-devices) and (max-height: b.$xl-devices) {
   .main-container {
     display: flex;
     flex-direction: column;
@@ -160,11 +120,51 @@
   }
 }
 
+// @media only screen and (min-width: b.$lg-devices) and (max-width: b.$xl-devices) {
+//   .main-container {
+//     display: grid;
+//     grid-template-columns: 1fr 2fr;
+//     grid-template-areas: 'left right';
+//     column-gap: 80px;
+//     justify-content: center;
+//     align-items: center;
+//   }
+//
+//   .info-bar {
+//     display: flex;
+//     font-size: 1.2rem;
+//     justify-content: space-around;
+//   }
+//
+//   .directory {
+//     font-size: 2rem;
+//   }
+//
+//   .links-container {
+//     text-align: center;
+//     gap: 0.1rem;
+//     padding-top: 0px;
+//   }
+//
+//   [data-picture] {
+//     width: 100%;
+//     margin: 1.5rem;
+//   }
+//
+//   [data-list-title] {
+//     font-size: 1.4rem;
+//   }
+//
+//   [data-list-item] {
+//     font-size: 1.2rem;
+//   }
+// }
+//
 @media only screen and (min-width: b.$xl-devices) {
   .main-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr;
-    grid-template-areas: '. left right .';
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 'left right';
     column-gap: 80px;
     justify-content: center;
     align-items: center;
