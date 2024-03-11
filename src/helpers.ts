@@ -3,6 +3,8 @@ import {
   createBonfireLinkEl,
   createTimerDialogWindow,
   createLightSwitchButton,
+  createComicsDialogButton,
+  createComicsDialog,
 } from './components';
 import { LinkList } from './types';
 import onSwitch from './assets/img/on-switch.svg';
@@ -56,6 +58,10 @@ export function switchToWork(data: LinkList): void {
     (document.querySelector('.links-container') as HTMLElement) || null;
   const lightSwitch =
     (document.getElementById('light-switch') as HTMLImageElement) || null;
+  const comicsDialogLauncher =
+    (document.getElementById('comics-dialog-launcher') as HTMLImageElement) ||
+    null;
+  comicsDialogLauncher.remove();
   localStorage.setItem('mode', 'work');
   const timerButton = document.createElement('img') as HTMLImageElement;
   const timerDialogWindow = createTimerDialogWindow();
@@ -129,6 +135,7 @@ export function switchToBonfire(data: LinkList): void {
   const directory =
     (document.querySelector('[data-directory]') as HTMLParagraphElement) ||
     null;
+  const comicsDialogButton = createComicsDialogButton();
   const directoryContainer =
     (document.getElementById('directory-container') as HTMLDivElement) || null;
   const pic = (document.getElementById('picture') as HTMLImageElement) || null;
@@ -141,6 +148,9 @@ export function switchToBonfire(data: LinkList): void {
     (document.getElementById('timer') as HTMLImageElement) || null;
   const timerDialog =
     (document.getElementById('timer-dialog') as HTMLDialogElement) || null;
+
+  const comicsDialog = createComicsDialog();
+
   if (timerDialog) {
     timerDialog.remove();
   }
@@ -166,10 +176,20 @@ export function switchToBonfire(data: LinkList): void {
   directory.setAttribute('data-directory', 'bonfire');
   directoryContainer.removeChild(directoryContainer.lastElementChild as Node);
   directoryContainer.appendChild(directory);
+  infoBar.insertBefore(comicsDialogButton, infoBar.firstChild);
   infoBar.appendChild(lightSwitch);
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
   tab.textContent = '~/bonfire';
+  body.append(comicsDialog);
+
+  /*
+   * Comics Dialog functionality
+   */
+
+  comicsDialogButton.addEventListener('click', () => {
+    comicsDialog.showModal();
+  });
 }
 
 export function switchModes(data: LinkList) {
