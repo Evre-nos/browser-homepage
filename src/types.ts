@@ -2,6 +2,11 @@ export type Temperature = {
   temp: number;
 };
 
+export type Comic = {
+  seriesName: string;
+  rssUrl: string;
+};
+
 export type LinkList = {
   work?: Entity[] | null;
   bonfire?: Entity[] | null;
