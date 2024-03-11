@@ -58,13 +58,24 @@ button[data-button='bonfire'] {
 
 #light-switch[data-mode='bonfire'] {
   background: none;
-  filter: invert(85%) sepia(11%) saturate(299%) hue-rotate(328deg)
-    brightness(107%) contrast(83%);
+  filter: invert(85%) sepia(11%) saturate(299%) hue-rotate(328deg) brightness(107%) contrast(83%);
 }
 
 #light-switch[data-mode='bonfire']:hover {
   background: none;
-  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg)
-    brightness(100%) contrast(97%);
+  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg) brightness(100%) contrast(97%);
+  cursor: pointer;
+}
+
+#comics-dialog-launcher[data-mode='bonfire'] {
+  background: none;
+  width: 61.4px;
+  height: 49.6px;
+  filter: invert(85%) sepia(11%) saturate(299%) hue-rotate(328deg) brightness(107%) contrast(83%);
+}
+
+#comics-dialog-launcher[data-mode='bonfire']:hover {
+  background: none;
+  filter: invert(98%) sepia(65%) saturate(3024%) hue-rotate(299deg) brightness(100%) contrast(97%);
   cursor: pointer;
 }
