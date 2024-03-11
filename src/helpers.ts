@@ -194,10 +194,8 @@ export function switchToBonfire(data: LinkList): void {
 
 export function switchModes(data: LinkList) {
   if (localStorage.getItem('mode') == 'work') {
-    console.log('switch to bonfire');
     switchToBonfire(data);
   } else {
-    console.log('switch to work');
     switchToWork(data);
   }
 }
