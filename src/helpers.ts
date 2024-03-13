@@ -226,3 +226,30 @@ export function init(data: LinkList): void {
     initButtons(data);
   }
 }
+
+export function fetchComic(rssURL: string): Array<ComicStrip> {
+  const parser = new DOMParser();
+  const comicStripArray: Array<ComicStrip> = [];
+  fetch(rssURL)
+    .then((response) => response.text())
+    .then((str) => new window.DOMParser().parseFromString(str, 'text/xml'))
+    .then((data) => {
+      const items = data.querySelectorAll('item');
+      items.forEach((item) => {
+        const stripData = item
+          .querySelector('description')
+          ?.innerHTML.toString();
+        const imgRegex = /<img[^>]*?src\s*=\s*[""']?([^'"" >]+?)[ '""][^>]*?>/g;
+        const comicStrip = stripData?.match(imgRegex);
+        if (comicStrip) {
+          const dummy = parser.parseFromString(`${comicStrip}`, 'text/html');
+          const temp: ComicStrip = {
+            seriesName: dummy.getElementsByTagName('img')[0].alt,
+            stripURL: dummy.getElementsByTagName('img')[0].src,
+          };
+          comicStripArray.push(temp);
+        }
+      });
+    });
+  return comicStripArray;
+}
