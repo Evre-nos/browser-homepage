@@ -41,6 +41,8 @@
 
 #timer-dialog {
   z-index: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 0.25rem;
   border-color: c.$cp-mauve;
   background-color: c.$cp-surface0;
@@ -73,8 +75,8 @@
   align-items: center;
 }
 
-#minutes-div > input,
-#seconds-div > input {
+#minutes-div>input,
+#seconds-div>input {
   display: flex;
   justify-content: center;
   align-items: center;

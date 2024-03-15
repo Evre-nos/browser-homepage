@@ -30,7 +30,9 @@ weather.then((data: string) => {
       (document.querySelector('[data-weather]') as HTMLElement) || null;
     weatherSpan.innerText = `${data}°C`;
   } catch (err) {
-    console.error(`Error: ${err}`);
+    const weatherSpan =
+      (document.querySelector('[data-weather]') as HTMLElement) || null;
+    weatherSpan.innerText = 'Could not get weather';
   }
 });
 

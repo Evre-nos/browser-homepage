@@ -1,4 +1,4 @@
-import { LinkList, Entity } from './types';
+import { LinkList, Entity, ComicInfo } from './types';
 import bonfireAppleTouch from './assets/img/bonfireFavicon/apple-touch-icon.png';
 import bonfireFav32 from './assets/img/bonfireFavicon/favicon-32x32.png';
 import bonfireFav16 from './assets/img/bonfireFavicon/favicon-16x16.png';
@@ -11,6 +11,8 @@ import workManifest from './assets/img/workFavicon/apple-touch-icon.png';
 import workMaskIcon from './assets/img/workFavicon/apple-touch-icon.png';
 import onSwtich from './assets/img/on-switch.svg';
 import offSwitch from './assets/img/off-switch.svg';
+import aaugh from './assets/img/aaugh.svg';
+import { clearChildNodes, fetchComic } from './helpers';
 
 export function createLI(dataObj: Entity): HTMLLIElement {
   const li = document.createElement('li');
@@ -231,7 +233,111 @@ export function createLightSwitchButton(): HTMLImageElement {
   return img;
 }
 
+export function createComicsDialogButton(): HTMLImageElement {
+  const img = document.createElement('img');
+  img.alt = 'comics-dialog-launcher';
+  img.id = 'comics-dialog-launcher';
+  img.dataset.mode = 'bonfire';
+  img.src = aaugh;
+  return img;
+}
+
+export function createComicsSeriesButton(
+  seriesName: string,
+  rssUrl: string
+): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.textContent = seriesName;
+  button.classList.add('comic-series-button');
+  button.dataset.rssUrl = rssUrl;
+  button.dataset.button = 'bonfire';
+
+  button.addEventListener('click', async () => {
+    const rssData = await fetchComic(rssUrl);
+    const comicStripDiv =
+      (document.getElementById('comic-strips-div') as HTMLDivElement) || null;
+    clearChildNodes(comicStripDiv);
+    rssData.forEach((comicStrip) => {
+      comicStripDiv.appendChild(
+        createComicStripElement(comicStrip.seriesName, comicStrip.stripURL)
+      );
+    });
+  });
+
+  return button;
+}
+
+export function createComicStripElement(
+  title: string,
+  imageURL: string
+): HTMLElement {
+  const comic = document.createElement('div');
+  const comicTitle = document.createElement('h2');
+  const comicImage = document.createElement('img');
+  comicTitle.classList.add('comic-strip-title-date');
+  comicTitle.textContent = title;
+  comicImage.classList.add('comic-strip');
+  comicImage.src = imageURL;
+  comic.appendChild(comicTitle);
+  comic.appendChild(comicImage);
+  return comic;
+}
+
 export function createComicsDialog(): HTMLDialogElement {
-  const dialogWindow = document.createElement('dialog');
-  return dialogWindow;
+  const dialog = document.createElement('dialog');
+  dialog.id = 'comics-dialog';
+
+  // Dialog Header
+  const title = document.createElement('h1');
+  title.textContent = 'Daily Comics Strips';
+  title.id = 'comic-strips-header';
+  title.dataset.mode = 'bonfire';
+
+  // Div to hold series buttons
+  const comicSeriesButtonDiv = document.createElement('div');
+  comicSeriesButtonDiv.id = 'comic-series-button-div';
+  comicSeriesButtonDiv.dataset.mode = 'bonfire';
+
+  // Div to hold the rss content
+  const comicStripsDiv = document.createElement('div');
+  comicStripsDiv.id = 'comic-strips-div';
+
+  const comicTitleArray: Array<ComicInfo> = [
+    {
+      seriesName: 'Nancy',
+      rssUrl: 'https://www.comicsrss.com/rss/nancy-classics.rss',
+    },
+    {
+      seriesName: 'Peanuts',
+      rssUrl: 'https://www.comicsrss.com/rss/peanuts.rss',
+    },
+    {
+      seriesName: 'Zippy',
+      rssUrl: 'https://www.comicsrss.com/rss/zippy-the-pinhead.rss',
+    },
+    {
+      seriesName: 'Krazy Kat',
+      rssUrl: 'https://www.comicsrss.com/rss/krazy-kat.rss',
+    },
+    {
+      seriesName: 'Calvin & Hobbs',
+      rssUrl: 'https://www.comicsrss.com/rss/calvinandhobbes.rss',
+    },
+    {
+      seriesName: 'False Knees',
+      rssUrl: 'https://www.comicsrss.com/rss/false-knees.rss',
+    },
+  ];
+
+  dialog.appendChild(title);
+  dialog.appendChild(comicSeriesButtonDiv);
+  dialog.appendChild(comicStripsDiv);
+
+  comicTitleArray.forEach((comic) => {
+    comicSeriesButtonDiv.appendChild(
+      createComicsSeriesButton(comic.seriesName, comic.rssUrl)
+    );
+  });
+
+  return dialog;
 }
