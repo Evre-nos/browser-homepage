@@ -2,9 +2,14 @@ export type Temperature = {
   temp: number;
 };
 
-export type Comic = {
+export type ComicInfo = {
   seriesName: string;
   rssUrl: string;
+};
+
+export type ComicStrip = {
+  seriesName: string;
+  stripURL: string;
 };
 
 export type LinkList = {
