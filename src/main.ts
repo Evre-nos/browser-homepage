@@ -23,7 +23,6 @@ const dateSpan = document.querySelector('[data-date]') as HTMLElement;
 dateSpan.innerText = currentDay;
 
 const weather = fetchWeather(date);
-console.log(weather);
 
 weather.then((data: string) => {
   try {

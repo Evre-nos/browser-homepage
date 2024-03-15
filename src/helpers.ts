@@ -5,8 +5,9 @@ import {
   createLightSwitchButton,
   createComicsDialogButton,
   createComicsDialog,
+  createComicStripElement,
 } from './components';
-import { LinkList } from './types';
+import { ComicStrip, LinkList } from './types';
 import onSwitch from './assets/img/on-switch.svg';
 import offSwitch from './assets/img/off-switch.svg';
 import timer from './assets/img/timer.svg';
@@ -41,6 +42,7 @@ export async function fetchWeather(date: Date): Promise<string> {
 }
 
 export function switchToWork(data: LinkList): void {
+  // Creating or Getting Components / Component references
   const tab = (document.querySelector('title') as HTMLTitleElement) || null;
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
@@ -61,7 +63,13 @@ export function switchToWork(data: LinkList): void {
   const comicsDialogLauncher =
     (document.getElementById('comics-dialog-launcher') as HTMLImageElement) ||
     null;
+  const comicsDialog =
+    (document.getElementById('comics-dialog') as HTMLDialogElement) || null;
+
+  // Remove Comics Dialog Window and Button to launch said Dialog
+  comicsDialog.remove();
   comicsDialogLauncher.remove();
+
   localStorage.setItem('mode', 'work');
   const timerButton = document.createElement('img') as HTMLImageElement;
   const timerDialogWindow = createTimerDialogWindow();
@@ -124,7 +132,8 @@ export function switchToWork(data: LinkList): void {
   });
 }
 
-export function switchToBonfire(data: LinkList): void {
+export async function switchToBonfire(data: LinkList): Promise<void> {
+  // Finding Elements that need to change
   const tab = (document.querySelector('title') as HTMLTitleElement) || null;
   const title =
     (document.querySelector('[data-list-title]') as HTMLLIElement) || null;
@@ -148,9 +157,17 @@ export function switchToBonfire(data: LinkList): void {
     (document.getElementById('timer') as HTMLImageElement) || null;
   const timerDialog =
     (document.getElementById('timer-dialog') as HTMLDialogElement) || null;
-
   const comicsDialog = createComicsDialog();
 
+  const comicButtons =
+    (document.querySelectorAll(
+      '.comic-series-button'
+    ) as NodeListOf<HTMLButtonElement>) || null;
+
+  // Adding display:flex here so it isn't visible when page loads
+  comicsDialog.style.flex = 'flex';
+
+  // if timer dialog and timer button are on the page, remove them
   if (timerDialog) {
     timerDialog.remove();
   }
@@ -181,6 +198,18 @@ export function switchToBonfire(data: LinkList): void {
   directory.innerHTML = '&gt; cd ~/bonfire/<span class="blinking">_</span>';
   rightContainer.appendChild(createBonfireLinkEl(data));
   tab.textContent = '~/bonfire';
+  comicButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const comicArray = await fetchComic(button.dataset.rssUrl as string);
+      const comicStripDiv =
+        (document.getElementById('comic-strips-div') as HTMLDivElement) || null;
+      comicArray.forEach((comic) => {
+        comicStripDiv.appendChild(
+          createComicStripElement(comic.seriesName, comic.stripURL)
+        );
+      });
+    });
+  });
   body.append(comicsDialog);
 
   /*
@@ -227,29 +256,28 @@ export function init(data: LinkList): void {
   }
 }
 
-export function fetchComic(rssURL: string): Array<ComicStrip> {
+export async function fetchComic(rssURL: string): Promise<Array<ComicStrip>> {
   const parser = new DOMParser();
-  const comicStripArray: Array<ComicStrip> = [];
-  fetch(rssURL)
-    .then((response) => response.text())
-    .then((str) => new window.DOMParser().parseFromString(str, 'text/xml'))
-    .then((data) => {
-      const items = data.querySelectorAll('item');
-      items.forEach((item) => {
-        const stripData = item
-          .querySelector('description')
-          ?.innerHTML.toString();
-        const imgRegex = /<img[^>]*?src\s*=\s*[""']?([^'"" >]+?)[ '""][^>]*?>/g;
-        const comicStrip = stripData?.match(imgRegex);
-        if (comicStrip) {
-          const dummy = parser.parseFromString(`${comicStrip}`, 'text/html');
-          const temp: ComicStrip = {
-            seriesName: dummy.getElementsByTagName('img')[0].alt,
-            stripURL: dummy.getElementsByTagName('img')[0].src,
-          };
-          comicStripArray.push(temp);
-        }
-      });
-    });
+  const comicStripArray = new Array<ComicStrip>();
+  const rssResponse = await fetch(rssURL);
+  const textResponse = await rssResponse.text();
+  const dataHunk = new window.DOMParser().parseFromString(
+    textResponse,
+    'text/xml'
+  );
+  const items = dataHunk.querySelectorAll('item');
+  items.forEach((item) => {
+    const stripData = item.querySelector('description')?.innerHTML.toString();
+    const imgRegex = /<img[^>]*?src\s*=\s*[""']?([^'"" >]+?)[ '""][^>]*?>/g;
+    const comicStrip = stripData?.match(imgRegex);
+    if (comicStrip) {
+      const dummy = parser.parseFromString(`${comicStrip}`, 'text/html');
+      const temp: ComicStrip = {
+        seriesName: dummy.getElementsByTagName('img')[0].alt,
+        stripURL: dummy.getElementsByTagName('img')[0].src,
+      };
+      comicStripArray.push(temp);
+    }
+  });
   return comicStripArray;
 }
