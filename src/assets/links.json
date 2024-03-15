@@ -138,7 +138,7 @@
       "name": "jellyfin",
       "group": "2",
       "mode": "bonfire",
-      "url": "http://localhost:8096"
+      "url": "https://jellyfin.adambazzi.ca"
     },
     {
       "name": "lidarr",
