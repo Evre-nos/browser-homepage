@@ -67,8 +67,10 @@ export function switchToWork(data: LinkList): void {
     (document.getElementById('comics-dialog') as HTMLDialogElement) || null;
 
   // Remove Comics Dialog Window and Button to launch said Dialog
-  comicsDialog.remove();
-  comicsDialogLauncher.remove();
+  if (comicsDialog && comicsDialogLauncher) {
+    comicsDialog.remove();
+    comicsDialogLauncher.remove();
+  }
 
   localStorage.setItem('mode', 'work');
   const timerButton = document.createElement('img') as HTMLImageElement;
