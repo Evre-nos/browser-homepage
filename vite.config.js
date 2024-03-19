@@ -45,15 +45,15 @@ export default defineConfig({
       },
       jpeg: {
         // https://sharp.pixelplumbing.com/api-output#jpeg
-        quality: 100,
+        quality: 50,
       },
       jpg: {
         // https://sharp.pixelplumbing.com/api-output#jpeg
-        quality: 100,
+        quality: 50,
       },
       tiff: {
         // https://sharp.pixelplumbing.com/api-output#tiff
-        quality: 100,
+        quality: 50,
       },
       // gif does not support lossless compression
       // https://sharp.pixelplumbing.com/api-output#gif
