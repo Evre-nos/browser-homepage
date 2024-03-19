@@ -253,14 +253,55 @@ export function createComicsSeriesButton(
   button.dataset.button = 'bonfire';
 
   button.addEventListener('click', async () => {
+    const oldLeftNav = document.getElementById('comic-left-nav-button');
+    const oldRightNav = document.getElementById('comic-right-nav-button');
+    if (oldLeftNav && oldRightNav) {
+      oldLeftNav.remove();
+      oldRightNav.remove();
+    }
     const rssData = await fetchComic(rssUrl);
+    let comicStripIndex = 0;
+    const comicTitleDiv =
+      (document.getElementById('comic-title-div') as HTMLDivElement) || null;
+    const leftNavButton = createComicNavigationLeftButton();
+    const rightNavButton = createComicNavigationRightButton();
     const comicStripDiv =
       (document.getElementById('comic-strips-div') as HTMLDivElement) || null;
+    comicTitleDiv.insertBefore(leftNavButton, comicTitleDiv.firstChild);
     clearChildNodes(comicStripDiv);
-    rssData.forEach((comicStrip) => {
+    comicStripDiv.appendChild(
+      createComicStripElement(
+        rssData[comicStripIndex].seriesName,
+        rssData[comicStripIndex].stripURL
+      )
+    );
+    comicTitleDiv.appendChild(rightNavButton);
+
+    leftNavButton.addEventListener('click', () => {
+      clearChildNodes(comicStripDiv);
+      if (comicStripIndex < 0) {
+        comicStripIndex = 24;
+      }
       comicStripDiv.appendChild(
-        createComicStripElement(comicStrip.seriesName, comicStrip.stripURL)
+        createComicStripElement(
+          rssData[comicStripIndex].seriesName,
+          rssData[comicStripIndex].stripURL
+        )
       );
+      comicStripIndex--;
+    });
+    rightNavButton.addEventListener('click', () => {
+      clearChildNodes(comicStripDiv);
+      if (comicStripIndex > 24) {
+        comicStripIndex = 0;
+      }
+      comicStripDiv.appendChild(
+        createComicStripElement(
+          rssData[comicStripIndex].seriesName,
+          rssData[comicStripIndex].stripURL
+        )
+      );
+      comicStripIndex++;
     });
   });
 
@@ -307,11 +348,16 @@ export function createComicsDialog(): HTMLDialogElement {
   const dialog = document.createElement('dialog');
   dialog.id = 'comics-dialog';
 
+  const titleDiv = document.createElement('div');
+
   // Dialog Header
   const title = document.createElement('h1');
   title.textContent = 'Daily Comics Strips';
   title.id = 'comic-strips-header';
   title.dataset.mode = 'bonfire';
+
+  titleDiv.setAttribute('id', 'comic-title-div');
+  titleDiv.append(title);
 
   // Div to hold series buttons
   const comicSeriesButtonDiv = document.createElement('div');
@@ -349,7 +395,7 @@ export function createComicsDialog(): HTMLDialogElement {
     },
   ];
 
-  dialog.appendChild(title);
+  dialog.appendChild(titleDiv);
   dialog.appendChild(comicSeriesButtonDiv);
   dialog.appendChild(comicStripsDiv);
 
