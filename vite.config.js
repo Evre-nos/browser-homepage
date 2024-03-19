@@ -41,7 +41,7 @@ export default defineConfig({
       },
       png: {
         // https://sharp.pixelplumbing.com/api-output#png
-        quality: 100,
+        quality: 50,
       },
       jpeg: {
         // https://sharp.pixelplumbing.com/api-output#jpeg
