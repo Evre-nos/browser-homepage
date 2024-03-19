@@ -267,6 +267,26 @@ export function createComicsSeriesButton(
   return button;
 }
 
+export function createComicNavigationRightButton(): HTMLButtonElement {
+  const rightButton = document.createElement('button');
+  const textNode = document.createTextNode('\u2192');
+  rightButton.textContent = textNode.textContent;
+  rightButton.classList.add('comic-nav-button');
+  rightButton.dataset.mode = 'bonfire';
+  rightButton.setAttribute('id', 'comic-right-nav-button');
+  return rightButton;
+}
+
+export function createComicNavigationLeftButton(): HTMLButtonElement {
+  const leftButton = document.createElement('button');
+  const textNode = document.createTextNode('\u2190');
+  leftButton.textContent = textNode.textContent;
+  leftButton.classList.add('comic-nav-button');
+  leftButton.dataset.mode = 'bonfire';
+  leftButton.setAttribute('id', 'comic-left-nav-button');
+  return leftButton;
+}
+
 export function createComicStripElement(
   title: string,
   imageURL: string
