@@ -1,4 +1,4 @@
-import { LinkList, Entity, ComicInfo } from './types';
+import { LinkList, Entity, ComicInfo, ComicStrip } from './types';
 import bonfireAppleTouch from './assets/img/bonfireFavicon/apple-touch-icon.png';
 import bonfireFav32 from './assets/img/bonfireFavicon/favicon-32x32.png';
 import bonfireFav16 from './assets/img/bonfireFavicon/favicon-16x16.png';
@@ -251,8 +251,7 @@ export function createComicsSeriesButton(
   button.classList.add('comic-series-button');
   button.dataset.rssUrl = rssUrl;
   button.dataset.button = 'bonfire';
-  // Show newest strip first
-  let comicStripIndex = 24;
+  let comicStripIndex = 23;
 
   button.addEventListener('click', async () => {
     const oldLeftNav = document.getElementById('comic-left-nav-button');
@@ -262,14 +261,15 @@ export function createComicsSeriesButton(
       oldRightNav.remove();
     }
 
-    let rssData = await fetchComic(rssUrl);
     /**
      * Comics Strips are fetched from Newest to Oldest, reversing the array
      * will put them in the order they were released where the first comic in
      * the array is the oldest instead of the newest
      */
+    let rssData = await fetchComic(rssUrl);
     rssData = rssData.reverse();
 
+    const selectMenu = createComicSelectMenu(rssData);
     const comicTitleDiv =
       (document.getElementById('comic-title-div') as HTMLDivElement) || null;
     const leftNavButton = createComicNavigationLeftButton();
@@ -280,6 +280,7 @@ export function createComicsSeriesButton(
 
     clearChildNodes(comicStripDiv);
 
+    comicStripDiv.insertBefore(selectMenu, comicStripDiv.firstChild);
     comicStripDiv.appendChild(
       createComicStripElement(
         rssData[comicStripIndex].seriesName,
@@ -322,6 +323,20 @@ export function createComicsSeriesButton(
   return button;
 }
 
+export function createComicSelectMenu(
+  rssData: ComicStrip[]
+): HTMLSelectElement {
+  const selectMenu = document.createElement('select');
+  selectMenu.setAttribute('id', 'comic-strip-select-menu');
+  rssData.forEach((comicStrip) => {
+    const option = new Option();
+    option.text = comicStrip.seriesName;
+    option.value = comicStrip.stripURL;
+    selectMenu.add(option);
+  });
+  return selectMenu;
+}
+
 export function createComicNavigationRightButton(): HTMLButtonElement {
   const rightButton = document.createElement('button');
   const textNode = document.createTextNode('\u2192');
@@ -355,6 +370,7 @@ export function createComicStripElement(
   comicImage.src = imageURL;
   comic.appendChild(comicTitle);
   comic.appendChild(comicImage);
+  comic.setAttribute('id', 'comic-strip');
   return comic;
 }
 
