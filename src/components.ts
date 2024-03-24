@@ -251,6 +251,8 @@ export function createComicsSeriesButton(
   button.classList.add('comic-series-button');
   button.dataset.rssUrl = rssUrl;
   button.dataset.button = 'bonfire';
+  // Show newest strip first
+  let comicStripIndex = 24;
 
   button.addEventListener('click', async () => {
     const oldLeftNav = document.getElementById('comic-left-nav-button');
@@ -259,8 +261,15 @@ export function createComicsSeriesButton(
       oldLeftNav.remove();
       oldRightNav.remove();
     }
-    const rssData = await fetchComic(rssUrl);
-    let comicStripIndex = 0;
+
+    let rssData = await fetchComic(rssUrl);
+    /**
+     * Comics Strips are fetched from Newest to Oldest, reversing the array
+     * will put them in the order they were released where the first comic in
+     * the array is the oldest instead of the newest
+     */
+    rssData = rssData.reverse();
+
     const comicTitleDiv =
       (document.getElementById('comic-title-div') as HTMLDivElement) || null;
     const leftNavButton = createComicNavigationLeftButton();
@@ -268,7 +277,9 @@ export function createComicsSeriesButton(
     const comicStripDiv =
       (document.getElementById('comic-strips-div') as HTMLDivElement) || null;
     comicTitleDiv.insertBefore(leftNavButton, comicTitleDiv.firstChild);
+
     clearChildNodes(comicStripDiv);
+
     comicStripDiv.appendChild(
       createComicStripElement(
         rssData[comicStripIndex].seriesName,
@@ -289,10 +300,12 @@ export function createComicsSeriesButton(
         )
       );
       comicStripIndex--;
+      console.log(comicStripIndex);
     });
+
     rightNavButton.addEventListener('click', () => {
       clearChildNodes(comicStripDiv);
-      if (comicStripIndex > 24) {
+      if (comicStripIndex > 23) {
         comicStripIndex = 0;
       }
       comicStripDiv.appendChild(
@@ -302,6 +315,7 @@ export function createComicsSeriesButton(
         )
       );
       comicStripIndex++;
+      console.log(comicStripIndex);
     });
   });
 
