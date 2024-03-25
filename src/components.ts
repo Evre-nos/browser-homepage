@@ -1,4 +1,4 @@
-import { LinkList, Entity, ComicInfo, ComicStrip } from './types';
+import { LinkList, Entity, ComicInfo } from './types';
 import bonfireAppleTouch from './assets/img/bonfireFavicon/apple-touch-icon.png';
 import bonfireFav32 from './assets/img/bonfireFavicon/favicon-32x32.png';
 import bonfireFav16 from './assets/img/bonfireFavicon/favicon-16x16.png';
@@ -242,6 +242,7 @@ export function createComicsDialogButton(): HTMLImageElement {
   return img;
 }
 
+// TODO: This function does too many things
 export function createComicsSeriesButton(
   seriesName: string,
   rssUrl: string
@@ -269,7 +270,6 @@ export function createComicsSeriesButton(
     let rssData = await fetchComic(rssUrl);
     rssData = rssData.reverse();
 
-    const selectMenu = createComicSelectMenu(rssData);
     const comicTitleDiv =
       (document.getElementById('comic-title-div') as HTMLDivElement) || null;
     const leftNavButton = createComicNavigationLeftButton();
@@ -280,7 +280,6 @@ export function createComicsSeriesButton(
 
     clearChildNodes(comicStripDiv);
 
-    comicStripDiv.insertBefore(selectMenu, comicStripDiv.firstChild);
     comicStripDiv.appendChild(
       createComicStripElement(
         rssData[comicStripIndex].seriesName,
@@ -321,20 +320,6 @@ export function createComicsSeriesButton(
   });
 
   return button;
-}
-
-export function createComicSelectMenu(
-  rssData: ComicStrip[]
-): HTMLSelectElement {
-  const selectMenu = document.createElement('select');
-  selectMenu.setAttribute('id', 'comic-strip-select-menu');
-  rssData.forEach((comicStrip) => {
-    const option = new Option();
-    option.text = comicStrip.seriesName;
-    option.value = comicStrip.stripURL;
-    selectMenu.add(option);
-  });
-  return selectMenu;
 }
 
 export function createComicNavigationRightButton(): HTMLButtonElement {
