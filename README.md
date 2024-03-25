@@ -11,11 +11,15 @@ Work Mode has a timer that will disable switching modes to help focus on work
 
 ### Bonfire Mode
 
-![image](https://github.com/Abazzi/homePage/assets/8884041/7801f15d-d9e9-4157-91c9-375b1f445610)
+![image](https://github.com/Abazzi/homePage/assets/8884041/37dc0857-4ff5-43da-aeac-56d5b80808f9)
 
 ### Work Mode
 
-![image](https://github.com/Abazzi/homePage/assets/8884041/0f34767a-791b-48a0-ae85-5a36b37c3e0d)
+![image](https://github.com/Abazzi/homePage/assets/8884041/2313bd6e-9b52-4c10-a190-03012254d7a9)
+
+### Comic Strip Dialog
+![image](https://github.com/Abazzi/homePage/assets/8884041/442bfdba-50d6-478a-a889-17d71b4a91f3)
+
 
 ## Attributes
 
