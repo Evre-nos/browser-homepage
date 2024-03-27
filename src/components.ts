@@ -252,7 +252,6 @@ export function createComicsSeriesButton(
   button.classList.add('comic-series-button');
   button.dataset.rssUrl = rssUrl;
   button.dataset.button = 'bonfire';
-  let comicStripIndex = 23;
 
   button.addEventListener('click', async () => {
     const oldLeftNav = document.getElementById('comic-left-nav-button');
@@ -269,6 +268,7 @@ export function createComicsSeriesButton(
      */
     let rssData = await fetchComic(rssUrl);
     rssData = rssData.reverse();
+    let comicStripIndex = 25;
 
     const comicTitleDiv =
       (document.getElementById('comic-title-div') as HTMLDivElement) || null;
@@ -290,31 +290,28 @@ export function createComicsSeriesButton(
 
     leftNavButton.addEventListener('click', () => {
       clearChildNodes(comicStripDiv);
-      if (comicStripIndex < 0) {
-        comicStripIndex = 24;
+      if (comicStripIndex < 1) {
+        comicStripIndex = rssData.length;
       }
+      comicStripIndex--;
       comicStripDiv.appendChild(
         createComicStripElement(
           rssData[comicStripIndex].seriesName,
           rssData[comicStripIndex].stripURL
         )
       );
-      comicStripIndex--;
       console.log(comicStripIndex);
     });
 
     rightNavButton.addEventListener('click', () => {
       clearChildNodes(comicStripDiv);
-      if (comicStripIndex > 23) {
-        comicStripIndex = 0;
-      }
+      comicStripIndex = (comicStripIndex + 1) % rssData.length;
       comicStripDiv.appendChild(
         createComicStripElement(
           rssData[comicStripIndex].seriesName,
           rssData[comicStripIndex].stripURL
         )
       );
-      comicStripIndex++;
       console.log(comicStripIndex);
     });
   });
