@@ -117,10 +117,10 @@
       "url": "https://discord.com/app"
     },
     {
-      "name": "criterion channel",
+      "name": "audobookshelf",
       "group": "2",
       "mode": "bonfire",
-      "url": "https://criterionchannel.com"
+      "url": "https://abshelf.adambazzi.ca"
     },
     {
       "name": "netflix",
@@ -129,10 +129,10 @@
       "url": "https://netflix.com"
     },
     {
-      "name": "tubi",
+      "name": "navidrome",
       "group": "2",
       "mode": "bonfire",
-      "url": "https://tubi.tv"
+      "url": "https://navidrome.adambazzi.ca"
     },
     {
       "name": "jellyfin",
