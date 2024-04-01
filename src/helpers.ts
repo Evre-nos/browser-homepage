@@ -120,17 +120,25 @@ export function switchToWork(data: LinkList): void {
     const seconds = Number(+secondsInput * 1000);
 
     const totalTime = minutes + seconds;
-    console.log(totalTime);
+    localStorage.endTime = +new Date() + totalTime;
+    console.log(localStorage.getItem('endTime'));
 
+    const timeRemainingEl = document.createElement('p');
     lightSwitch.remove();
-    setTimeout(() => {
+    infoBar?.appendChild(timeRemainingEl);
+    setInterval(() => {
+      const remaining = localStorage.endTime - +new Date();
       const lightSwitch = createLightSwitchButton();
-      infoBar?.appendChild(lightSwitch);
-      lightSwitch.addEventListener('click', () => {
-        switchModes(data);
-      });
+      if (remaining >= 0) {
+        timeRemainingEl.textContent = `${Math.floor(remaining / 1000)}`;
+      } else {
+        infoBar?.appendChild(lightSwitch);
+        lightSwitch.addEventListener('click', () => {
+          switchModes(data);
+        });
+      }
       alert('Work is done!');
-    }, totalTime);
+    }, 100);
   });
 }
 
@@ -256,6 +264,23 @@ export function init(data: LinkList): void {
     switchToWork(data);
     initButtons(data);
   }
+}
+
+export function runTimer(length: number, el: HTMLParagraphElement): void {
+  localStorage.endTime = +new Date() + length;
+  setInterval(() => {
+    const remaning = localStorage.endTime - +new Date();
+    if (remaning >= 0) {
+      el.textContent = `${Math.floor(remaning / 1000)}`;
+    } else {
+      infoBar?.appendChild(lightSwitch);
+      lightSwitch.addEventListener('click', () => {
+        switchModes(data);
+      });
+      alert('Work is done!');
+      return;
+    }
+  }, 100);
 }
 
 export async function fetchComic(rssURL: string): Promise<Array<ComicStrip>> {
