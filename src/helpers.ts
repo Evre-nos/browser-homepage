@@ -1,8 +1,6 @@
 import {
   createWorkLinksEl,
   createBonfireLinkEl,
-  createTimerDialogWindow,
-  createLightSwitchButton,
   createComicsDialogButton,
   createComicsDialog,
   createComicStripElement,
@@ -10,7 +8,6 @@ import {
 import { ComicStrip, LinkList } from './types';
 import onSwitch from './assets/img/on-switch.svg';
 import offSwitch from './assets/img/off-switch.svg';
-import timer from './assets/img/timer.svg';
 
 export function clearChildNodes(el: HTMLElement): void {
   while (el.firstChild) {
@@ -73,15 +70,6 @@ export function switchToWork(data: LinkList): void {
   }
 
   localStorage.setItem('mode', 'work');
-  const timerButton = document.createElement('img') as HTMLImageElement;
-  const timerDialogWindow = createTimerDialogWindow();
-  body.appendChild(timerDialogWindow);
-  timerButton.src = timer;
-  timerButton.setAttribute('id', 'timer');
-  timerButton.setAttribute('data-mode', 'work');
-  timerButton.addEventListener('click', () => {
-    timerDialogWindow.showModal();
-  });
   rightContainer.removeChild(linksContainer);
   lightSwitch.src = onSwitch;
   lightSwitch.removeAttribute('data-mode');
@@ -98,40 +86,7 @@ export function switchToWork(data: LinkList): void {
   directory.setAttribute('data-directory', 'work');
   directory.innerHTML = '&gt; cd ~/work/<span class="blinking">_</span>';
   tab.textContent = '~/work';
-  infoBar.insertBefore(timerButton, infoBar.firstChild);
   rightContainer.appendChild(createWorkLinksEl(data));
-
-  /**
-   * Start Timer Button in Modal Window is recieved at the end after everything
-   * else has loaded so it doesn't return null
-   */
-  const startTimerButton =
-    (document.getElementById('start-timer-button') as HTMLButtonElement) ||
-    null;
-  startTimerButton.addEventListener('click', () => {
-    timerDialogWindow.close();
-    const minuteInput: string = (
-      document.getElementById('minutes-input') as HTMLInputElement
-    ).value;
-    const secondsInput: string = (
-      document.getElementById('seconds-input') as HTMLInputElement
-    ).value;
-    const minutes = Number(+minuteInput * 60000);
-    const seconds = Number(+secondsInput * 1000);
-
-    const totalTime = minutes + seconds;
-    console.log(totalTime);
-
-    lightSwitch.remove();
-    setTimeout(() => {
-      const lightSwitch = createLightSwitchButton();
-      infoBar?.appendChild(lightSwitch);
-      lightSwitch.addEventListener('click', () => {
-        switchModes(data);
-      });
-      alert('Work is done!');
-    }, totalTime);
-  });
 }
 
 export async function switchToBonfire(data: LinkList): Promise<void> {
