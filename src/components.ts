@@ -169,56 +169,6 @@ export function createOpenComicsDialogButton(): HTMLButtonElement {
   return button;
 }
 
-export function createTimerDialogWindow(): HTMLDialogElement {
-  const dialogHeader = document.createElement('h2');
-  const dialogWindow = document.createElement('dialog');
-  const inputContainer = document.createElement('div');
-  const minutesDiv = document.createElement('div');
-  const secondsDiv = document.createElement('div');
-  const minuteHeader = document.createElement('h3');
-  const secondsHeader = document.createElement('h3');
-  const minutesInput = document.createElement('input');
-  const secondsInput = document.createElement('input');
-  const startButton = document.createElement('button');
-
-  dialogHeader.textContent = 'Time to Work';
-  minuteHeader.textContent = 'Minutes: ';
-  secondsHeader.textContent = 'Seconds: ';
-  startButton.textContent = 'Start Timer';
-
-  inputContainer.setAttribute('id', 'timer-input-container');
-  dialogWindow.setAttribute('id', 'timer-dialog');
-  startButton.setAttribute('id', 'start-timer-button');
-
-  minutesInput.type = 'number';
-  minutesInput.min = '1';
-  minutesInput.max = '60';
-  minutesInput.setAttribute('id', 'minutes-input');
-
-  secondsInput.min = '1';
-  secondsInput.max = '60';
-  secondsInput.type = 'number';
-  secondsInput.setAttribute('id', 'seconds-input');
-  secondsInput.setAttribute('required', '');
-
-  minutesDiv.setAttribute('id', 'minutes-div');
-  minutesDiv.appendChild(minuteHeader);
-  minutesDiv.appendChild(minutesInput);
-
-  secondsDiv.setAttribute('id', 'seconds-div');
-  secondsDiv.appendChild(secondsHeader);
-  secondsDiv.appendChild(secondsInput);
-
-  inputContainer.appendChild(minutesDiv);
-  inputContainer.appendChild(secondsDiv);
-
-  dialogWindow.appendChild(dialogHeader);
-  dialogWindow.appendChild(inputContainer);
-  dialogWindow.appendChild(startButton);
-
-  return dialogWindow;
-}
-
 export function createLightSwitchButton(): HTMLImageElement {
   const img = document.createElement('img');
   img.alt = 'light-switch';
@@ -256,8 +206,11 @@ export function createComicsSeriesButton(
   button.addEventListener('click', async () => {
     const oldLeftNav = document.getElementById('comic-left-nav-button');
     const oldRightNav = document.getElementById('comic-right-nav-button');
-    if (oldLeftNav && oldRightNav) {
+    if (oldLeftNav) {
       oldLeftNav.remove();
+    }
+
+    if (oldRightNav) {
       oldRightNav.remove();
     }
 
@@ -394,16 +347,8 @@ export function createComicsDialog(): HTMLDialogElement {
       rssUrl: 'https://www.comicsrss.com/rss/zippy-the-pinhead.rss',
     },
     {
-      seriesName: 'Krazy Kat',
-      rssUrl: 'https://www.comicsrss.com/rss/krazy-kat.rss',
-    },
-    {
       seriesName: 'Calvin & Hobbs',
       rssUrl: 'https://www.comicsrss.com/rss/calvinandhobbes.rss',
-    },
-    {
-      seriesName: 'False Knees',
-      rssUrl: 'https://www.comicsrss.com/rss/false-knees.rss',
     },
   ];
 
