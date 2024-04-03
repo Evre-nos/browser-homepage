@@ -144,25 +144,25 @@
       "name": "lidarr",
       "group": "3",
       "mode": "bonfire",
-      "url": "http://localhost:8686"
+      "url": "https://lidarr.adambazzi.ca"
     },
     {
       "name": "radarr",
       "group": "3",
       "mode": "bonfire",
-      "url": "http://localhost:7878/"
+      "url": "https://radarr.adambazzi.ca"
     },
     {
       "name": "sonarr",
       "group": "3",
       "mode": "bonfire",
-      "url": "http://localhost:8989/"
+      "url": "https://sonarr.adambazzi.ca"
     },
     {
       "name": "qbittorrent",
       "group": "3",
       "mode": "bonfire",
-      "url": "http://localhost:8112/"
+      "url": "https://qbit.adambazzi.ca"
     }
   ]
 }
