@@ -51,7 +51,7 @@ export function createBonfireLinkEl(data: LinkList): HTMLElement {
   groupOne.setAttribute('data-list', 'bonfire');
   groupTwo.appendChild(createTitleLI('social', 'bonfire'));
   groupTwo.setAttribute('data-list', 'bonfire');
-  groupThree.appendChild(createTitleLI('streaming', 'bonfire'));
+  groupThree.appendChild(createTitleLI('media', 'bonfire'));
   groupThree.setAttribute('data-list', 'bonfire');
   groupFour.appendChild(createTitleLI('server', 'bonfire'));
   groupFour.setAttribute('data-list', 'bonfire');
