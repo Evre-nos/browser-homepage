@@ -5,8 +5,6 @@ Has two modes: "Work" for any Dev links and "Bonfire" for any leisure links.
 
 Bonfire Mode Has a Dialog Window that uses [ComicsRSS](https://github.com/ArtskydJ/comicsrss.com) to fetch daily comic strips
 
-Work Mode has a timer that will disable switching modes to help focus on work
-
 ## Images
 
 ### Bonfire Mode
@@ -18,8 +16,8 @@ Work Mode has a timer that will disable switching modes to help focus on work
 ![image](https://github.com/Abazzi/homePage/assets/8884041/2313bd6e-9b52-4c10-a190-03012254d7a9)
 
 ### Comic Strip Dialog
-![image](https://github.com/Abazzi/homePage/assets/8884041/442bfdba-50d6-478a-a889-17d71b4a91f3)
 
+![image](https://github.com/Abazzi/homePage/assets/8884041/442bfdba-50d6-478a-a889-17d71b4a91f3)
 
 ## Attributes
 
