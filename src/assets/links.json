@@ -19,6 +19,18 @@
       "url": "https://exercism.org"
     },
     {
+      "name": "code wars",
+      "group": "0",
+      "mode": "work",
+      "url": "https://codewars.com"
+    },
+    {
+      "name": "30secondsOfCode",
+      "group": "0",
+      "mode": "work",
+      "url": "https://www.30secondsofcode.org"
+    },
+    {
       "name": "regex101",
       "group": "1",
       "mode": "work",
@@ -35,6 +47,12 @@
       "group": "1",
       "mode": "work",
       "url": "https://jsonlint.com/"
+    },
+    {
+      "name": "coolors",
+      "group": "1",
+      "mode": "work",
+      "url": "https://coolors.co/"
     },
     {
       "name": "mankier",
@@ -117,10 +135,10 @@
       "url": "https://discord.com/app"
     },
     {
-      "name": "audiobookshelf",
+      "name": "netflix",
       "group": "2",
       "mode": "bonfire",
-      "url": "https://pods.adambazzi.ca"
+      "url": "https://netflix.com"
     },
     {
       "name": "kavita",
