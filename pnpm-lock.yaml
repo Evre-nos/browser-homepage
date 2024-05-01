@@ -56,6 +56,10 @@ importers:
 
 packages:
 
+  '@aashutoshrathi/word-wrap@1.2.6':
+    resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
+    engines: {node: '>=0.10.0'}
+
   '@emnapi/runtime@1.1.1':
     resolution: {integrity: sha512-3bfqkzuR1KLx57nZfjr2NLnFOobvyS0aTszaEGCGqmYMVDRaGvgIZbjGSV/MHSSmLgQ/b9JFHQ5xm5WRZYd+XQ==}
 
@@ -1279,7 +1283,7 @@ packages:
     peerDependencies:
       eslint: ^8.56.0
       typescript: '*'
-    peerDependenciesMeta:
+    peerDependenciesMeta
       typescript:
         optional: true
 
@@ -1343,7 +1347,6 @@ packages:
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
-
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
@@ -1355,6 +1358,7 @@ packages:
     engines: {node: '>=10'}
 
 snapshots:
+  '@aashutoshrathi/word-wrap@1.2.6': {}
 
   '@emnapi/runtime@1.1.1':
     dependencies:
@@ -2323,11 +2327,15 @@ snapshots:
 
   optionator@0.9.4:
     dependencies:
+
+      '@aashutoshrathi/word-wrap': 1.2.6
+
       deep-is: 0.1.4
       fast-levenshtein: 2.0.6
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
       word-wrap: 1.2.5
 
   p-limit@2.3.0:
@@ -2586,7 +2594,6 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
-
   word-wrap@1.2.5: {}
 
   wrappy@1.0.2: {}
