@@ -221,7 +221,7 @@ export function createComicsSeriesButton(
      */
     let rssData = await fetchComic(rssUrl);
     rssData = rssData.reverse();
-    let comicStripIndex = 25;
+    let comicStripIndex = 49;
 
     const comicTitleDiv =
       (document.getElementById('comic-title-div') as HTMLDivElement) || null;

@@ -30,7 +30,7 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       sass:
-        specifier: ^1.74.1
+        specifier: ^1.76.0
         version: 1.76.0
       sharp:
         specifier: ^0.33.3
@@ -39,13 +39,13 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
       typescript:
-        specifier: ^5.4.4
+        specifier: ^5.4.5
         version: 5.4.5
       typescript-eslint:
-        specifier: ^7.5.0
+        specifier: ^7.8.0
         version: 7.8.0(eslint@8.57.0)(typescript@5.4.5)
       vite:
-        specifier: ^5.2.8
+        specifier: ^5.2.10
         version: 5.2.10(sass@1.76.0)
       vite-plugin-eslint:
         specifier: ^1.8.1
@@ -1064,8 +1064,8 @@ packages:
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
-  optionator@0.9.3:
-    resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
+  optionator@0.9.4:
+    resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
     engines: {node: '>= 0.8.0'}
 
   p-limit@2.3.0:
@@ -1283,7 +1283,7 @@ packages:
     peerDependencies:
       eslint: ^8.56.0
       typescript: '*'
-    peerDependenciesMeta:
+    peerDependenciesMeta
       typescript:
         optional: true
 
@@ -1344,6 +1344,9 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
+  word-wrap@1.2.5:
+    resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
+    engines: {node: '>=0.10.0'}
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
@@ -1355,7 +1358,6 @@ packages:
     engines: {node: '>=10'}
 
 snapshots:
-
   '@aashutoshrathi/word-wrap@1.2.6': {}
 
   '@emnapi/runtime@1.1.1':
@@ -2052,7 +2054,7 @@ snapshots:
       lodash.merge: 4.6.2
       minimatch: 3.1.2
       natural-compare: 1.4.0
-      optionator: 0.9.3
+      optionator: 0.9.4
       strip-ansi: 6.0.1
       text-table: 0.2.0
     transitivePeerDependencies:
@@ -2323,14 +2325,18 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  optionator@0.9.3:
+  optionator@0.9.4:
     dependencies:
+
       '@aashutoshrathi/word-wrap': 1.2.6
+
       deep-is: 0.1.4
       fast-levenshtein: 2.0.6
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+      word-wrap: 1.2.5
 
   p-limit@2.3.0:
     dependencies:
@@ -2588,6 +2594,7 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+  word-wrap@1.2.5: {}
 
   wrappy@1.0.2: {}
 
