@@ -31,6 +31,12 @@
       "url": "https://www.30secondsofcode.org"
     },
     {
+      "name": "leet code",
+      "group": "0",
+      "mode": "work",
+      "url": "https://www.leetcode.com"
+    },
+    {
       "name": "regex101",
       "group": "1",
       "mode": "work",
