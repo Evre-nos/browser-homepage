@@ -61,6 +61,12 @@
       "url": "https://coolors.co/"
     },
     {
+      "name": "excalidraw",
+      "group": "1",
+      "mode": "work",
+      "url": "https://excalidraw.adambazzi.ca/"
+    },
+    {
       "name": "mankier",
       "group": "2",
       "mode": "work",
@@ -117,6 +123,12 @@
       "url": "https://mail.google.com"
     },
     {
+      "name": "vaultwarden",
+      "group": "0",
+      "mode": "bonfire",
+      "url": "https://vaultwarden.adambazzi.ca"
+    },
+    {
       "name": "letterboxd",
       "group": "1",
       "mode": "bonfire",
@@ -163,6 +175,12 @@
       "group": "2",
       "mode": "bonfire",
       "url": "https://jellyfin.adambazzi.ca"
+    },
+    {
+      "name": "nextcloud",
+      "group": "2",
+      "mode": "bonfire",
+      "url": "https://nextcloud.adambazzi.ca"
     },
     {
       "name": "lidarr",
