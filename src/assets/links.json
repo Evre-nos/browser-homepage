@@ -177,10 +177,10 @@
       "url": "https://jellyfin.adambazzi.ca"
     },
     {
-      "name": "nextcloud",
+      "name": "photo prism",
       "group": "2",
       "mode": "bonfire",
-      "url": "https://nextcloud.adambazzi.ca"
+      "url": "https://photoprism.adambazzi.ca"
     },
     {
       "name": "lidarr",
