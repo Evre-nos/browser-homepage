@@ -123,6 +123,12 @@
       "url": "https://mail.google.com"
     },
     {
+      "name": "vaultwarden",
+      "group": "0",
+      "mode": "bonfire",
+      "url": "https://vaultwarden.adambazzi.ca"
+    },
+    {
       "name": "letterboxd",
       "group": "1",
       "mode": "bonfire",
@@ -169,6 +175,12 @@
       "group": "2",
       "mode": "bonfire",
       "url": "https://jellyfin.adambazzi.ca"
+    },
+    {
+      "name": "photo prism",
+      "group": "2",
+      "mode": "bonfire",
+      "url": "https://photoprism.adambazzi.ca"
     },
     {
       "name": "lidarr",
