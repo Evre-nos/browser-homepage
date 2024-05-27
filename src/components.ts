@@ -335,8 +335,12 @@ export function createComicsDialog(): HTMLDialogElement {
 
   const comicTitleArray: Array<ComicInfo> = [
     {
-      seriesName: 'Nancy',
+      seriesName: 'Nancy (Classic)',
       rssUrl: 'https://www.comicsrss.com/rss/nancy-classics.rss',
+    },
+    {
+      seriesName: 'Nancy (Modern)',
+      rssUrl: 'https://www.comicsrss.com/rss/nancy.rss',
     },
     {
       seriesName: 'Peanuts',
