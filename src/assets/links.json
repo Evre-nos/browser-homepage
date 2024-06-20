@@ -99,10 +99,10 @@
   ],
   "bonfire": [
     {
-      "name": "reddit",
+      "name": "facebook",
       "group": "0",
       "mode": "bonfire",
-      "url": "https://reddit.com"
+      "url": "https://www.facebook.com/"
     },
     {
       "name": "youtube",
@@ -111,22 +111,22 @@
       "url": "https://youtube.com"
     },
     {
-      "name": "proton mail",
+      "name": "instagram",
       "group": "0",
       "mode": "bonfire",
-      "url": "https://mail.proton.me"
+      "url": "https://www.instagram.com/"
+    },
+    {
+      "name": "reddit",
+      "group": "0",
+      "mode": "bonfire",
+      "url": "https://www.reddit.com/"
     },
     {
       "name": "gmail",
       "group": "0",
       "mode": "bonfire",
-      "url": "https://mail.google.com"
-    },
-    {
-      "name": "vaultwarden",
-      "group": "0",
-      "mode": "bonfire",
-      "url": "https://vaultwarden.adambazzi.ca"
+      "url": "https://mail.google.com/mail/u/0/#inbox"
     },
     {
       "name": "letterboxd",
